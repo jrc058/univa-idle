@@ -1,0 +1,345 @@
+/* Modular Window System - Clean Sharp Aesthetic */
+
+.ui-window {
+  position: absolute;
+  background: rgba(5, 5, 10, 0.98);
+  border: 1px solid rgba(100, 100, 120, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+}
+
+.ui-window-active {
+  border-color: rgba(150, 150, 180, 0.8);
+}
+
+.ui-window-titlebar {
+  background: rgba(20, 20, 30, 0.9);
+  border-bottom: 1px solid rgba(100, 100, 120, 0.3);
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  min-height: 28px;
+}
+
+.ui-window-titlebar:hover {
+  background: rgba(30, 30, 40, 0.9);
+}
+
+.ui-window-title {
+  color: rgba(200, 200, 220, 0.9);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.ui-window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.ui-window-controls button {
+  background: transparent;
+  border: 1px solid rgba(100, 100, 120, 0.4);
+  color: rgba(180, 180, 200, 0.8);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: normal;
+  transition: all 0.15s;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-window-controls button:hover {
+  background: rgba(100, 100, 120, 0.2);
+  border-color: rgba(150, 150, 180, 0.6);
+}
+
+.ui-btn-close:hover {
+  background: rgba(200, 80, 80, 0.2);
+  border-color: rgba(200, 80, 80, 0.6);
+  color: rgba(220, 100, 100, 0.9);
+}
+
+.ui-window-content {
+  flex: 1;
+  overflow: hidden;
+  padding: 10px;
+  color: rgba(200, 200, 220, 0.9);
+}
+
+/* Hide scrollbars completely */
+.ui-window-content::-webkit-scrollbar {
+  display: none;
+}
+
+.ui-window-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Minimized state */
+.ui-window-minimized {
+  height: auto !important;
+}
+
+.ui-window-minimized .ui-window-content {
+  display: none;
+}
+
+.ui-window-minimized .ui-resize-handle {
+  display: none;
+}
+
+/* Maximized state */
+.ui-window-maximized .ui-resize-handle {
+  display: none;
+}
+
+/* Dragging state */
+.ui-dragging {
+  opacity: 0.7;
+  cursor: move !important;
+}
+
+.ui-dragging * {
+  cursor: move !important;
+}
+
+/* Resizing state */
+.ui-resizing {
+  opacity: 0.7;
+}
+
+/* Resize handles */
+.ui-resize-handle {
+  position: absolute;
+  background: transparent;
+  z-index: 10;
+}
+
+.ui-resize-n {
+  top: -4px;
+  left: 8px;
+  right: 8px;
+  height: 8px;
+  cursor: ns-resize;
+}
+
+.ui-resize-s {
+  bottom: -4px;
+  left: 8px;
+  right: 8px;
+  height: 8px;
+  cursor: ns-resize;
+}
+
+.ui-resize-e {
+  right: -4px;
+  top: 8px;
+  bottom: 8px;
+  width: 8px;
+  cursor: ew-resize;
+}
+
+.ui-resize-w {
+  left: -4px;
+  top: 8px;
+  bottom: 8px;
+  width: 8px;
+  cursor: ew-resize;
+}
+
+.ui-resize-ne {
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nesw-resize;
+}
+
+.ui-resize-nw {
+  top: -4px;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nwse-resize;
+}
+
+.ui-resize-se {
+  bottom: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nwse-resize;
+}
+
+.ui-resize-sw {
+  bottom: -4px;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nesw-resize;
+}
+
+/* Panel content styles for windows */
+.ui-window-content .stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(100, 100, 120, 0.2);
+  color: rgba(150, 150, 170, 0.8);
+  font-size: 11px;
+}
+
+.ui-window-content .stat-row span:last-child {
+  color: rgba(200, 200, 220, 0.9);
+  font-weight: 500;
+}
+
+.ui-window-content .prestige-currency {
+  background: rgba(20, 20, 30, 0.5);
+  border: 1px solid rgba(100, 100, 120, 0.3);
+  padding: 8px;
+  margin: 8px 0;
+  font-size: 11px;
+}
+
+.ui-window-content .prestige-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.ui-window-content .prestige-name {
+  color: rgba(200, 200, 220, 0.9);
+  font-weight: 500;
+}
+
+.ui-window-content .prestige-bonus {
+  color: rgba(120, 200, 120, 0.9);
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.ui-window-content .evacuate-btn {
+  background: rgba(180, 60, 60, 0.8);
+  color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(200, 80, 80, 0.6);
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  transition: all 0.15s;
+  font-family: 'Courier New', monospace;
+}
+
+.ui-window-content .evacuate-btn:hover:not(:disabled) {
+  background: rgba(200, 80, 80, 0.9);
+  border-color: rgba(220, 100, 100, 0.8);
+}
+
+.ui-window-content .evacuate-btn:disabled {
+  background: rgba(40, 40, 50, 0.5);
+  border-color: rgba(80, 80, 90, 0.5);
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.ui-window-content .hint {
+  font-size: 10px;
+  color: rgba(130, 130, 150, 0.7);
+  font-style: italic;
+}
+
+/* Buy mode and upgrade styles in windows */
+.ui-window-content .buy-mode {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.ui-window-content .buy-mode-btn {
+  flex: 1;
+  padding: 5px;
+  background: rgba(20, 20, 30, 0.5);
+  border: 1px solid rgba(100, 100, 120, 0.3);
+  color: rgba(180, 180, 200, 0.8);
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  transition: all 0.15s;
+}
+
+.ui-window-content .buy-mode-btn:hover {
+  background: rgba(30, 30, 40, 0.6);
+  border-color: rgba(120, 120, 140, 0.5);
+}
+
+.ui-window-content .buy-mode-btn.active {
+  background: rgba(40, 40, 50, 0.7);
+  border-color: rgba(150, 150, 180, 0.6);
+  color: rgba(220, 220, 240, 0.95);
+}
+
+.ui-window-content .upgrade-tab-content {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ui-window-content .upgrade-tab-content.active {
+  display: flex;
+}
+
+.ui-window-content .upgrade-card {
+  background: rgba(15, 15, 25, 0.6);
+  border: 1px solid rgba(100, 100, 120, 0.3);
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ui-window-content .upgrade-card:hover:not(.disabled) {
+  background: rgba(25, 25, 35, 0.7);
+  border-color: rgba(130, 130, 150, 0.5);
+}
+
+.ui-window-content .upgrade-card.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: rgba(80, 80, 90, 0.2);
+}
+
+.ui-window-content .upgrade-card h3 {
+  font-size: 12px;
+  color: rgba(200, 200, 220, 0.9);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.ui-window-content .upgrade-card p {
+  font-size: 10px;
+  color: rgba(150, 150, 170, 0.8);
+  margin-bottom: 4px;
+}
+
+.ui-window-content .upgrade-cost {
+  font-size: 11px;
+  color: rgba(180, 200, 180, 0.9);
+  font-weight: 500;
+}
+
+.ui-window-content .upgrade-level {
+  font-size: 9px;
+  color: rgba(130, 130, 150, 0.7);
+  float: right;
+}

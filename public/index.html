@@ -3,30 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Univa Raids</title>
+  <title>Univa Idle</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/windows.css">
 </head>
 <body>
   <div id="app">
-    <header>
-      <h1>UNIVA RAIDS</h1>
-      <span class="subtitle">Co-op Roguelike Expeditions</span>
-    </header>
-    <main>
-      <div id="raid-lobby">
-        <h2>Available Raids</h2>
-        <div id="raid-list">
-          <div class="raid-card">
-            <h3>The Void Incursion</h3>
-            <p>Difficulty: Medium</p>
-            <p>Players: 2-4</p>
-            <p>Next event: Saturday 8 PM</p>
-            <button>Join Queue</button>
-          </div>
+    <!-- Top HUD -->
+    <div id="hud">
+      <div class="hud-menu">
+        <button id="menu-btn" class="hud-btn">☰</button>
+        <div id="menu-dropdown" class="menu-dropdown" style="display: none;">
+          <button class="menu-item" data-action="how-to-play">How to Play</button>
+          <button class="menu-item" data-action="mechanics">Mechanics Guide</button>
+          <button class="menu-item" data-action="statistics">Statistics</button>
+          <button class="menu-item" data-action="calculations">Calculations</button>
+          <div class="menu-divider"></div>
+          <button class="menu-item" data-action="reset">Reset Progress</button>
         </div>
       </div>
-    </main>
+      <div class="hud-left">
+        <div class="hud-title-row">
+          <h1>UNIVA IDLE</h1>
+          <span id="kardashev-label">Type 0 Civilization</span>
+          <span id="kardashev-goal" class="kardashev-goal">Goal: Master Planetary Energy</span>
+          <span id="kardashev-target" class="kardashev-target">0 / 1.00e18</span>
+        </div>
+        <div class="progress-bar">
+          <div id="kardashev-progress" class="progress-fill"></div>
+        </div>
+      </div>
+      <div class="hud-center">
+        <div class="resource">
+          <span class="resource-icon">⚡</span>
+          <span class="resource-label">Energy:</span>
+          <span id="energy-amount">0</span>
+          <span class="resource-rate">(+<span id="energy-rate">1</span>/s)</span>
+        </div>
+        <div class="resource" id="matter-resource" style="display: none;">
+          <span class="resource-icon">🔩</span>
+          <span class="resource-label">Matter:</span>
+          <span id="matter-amount">0</span>
+          <span class="resource-rate">(+<span id="matter-rate">0</span>/s)</span>
+        </div>
+        <div class="resource" id="info-resource" style="display: none;">
+          <span class="resource-icon">💡</span>
+          <span class="resource-label">Info:</span>
+          <span id="info-amount">0</span>
+          <span class="resource-rate">(+<span id="info-rate">0</span>/s)</span>
+        </div>
+      </div>
+      <div class="hud-stats">
+        <div class="stat-compact">
+          <span class="stat-label">Reach:</span>
+          <span id="stat-reach">0</span>
+        </div>
+        <div class="stat-compact">
+          <span class="stat-label">Harvests:</span>
+          <span id="stat-harvests">0</span>
+        </div>
+        <div class="stat-compact">
+          <span class="stat-label">Combo:</span>
+          <span id="stat-combo">×1</span>
+        </div>
+      </div>
+      <div class="hud-prestige" id="hud-prestige" style="display: none;">
+        <div class="prestige-compact" id="archived-data-display" style="display: none;">
+          <span class="prestige-icon-small">📚</span>
+          <span id="archived-data-amount">0</span>
+        </div>
+        <div class="prestige-compact" id="blueprints-display" style="display: none;">
+          <span class="prestige-icon-small">📋</span>
+          <span id="blueprints-amount">0</span>
+        </div>
+        <div class="prestige-compact" id="archives-display" style="display: none;">
+          <span class="prestige-icon-small">🧬</span>
+          <span id="archives-amount">0</span>
+        </div>
+      </div>
+      <div class="hud-challenge" id="hud-challenge" style="display: none;">
+        <div class="challenge-indicator">
+          <span class="challenge-icon">🎯</span>
+          <span id="challenge-name">Challenge</span>
+          <span class="challenge-progress" id="challenge-progress-text">0%</span>
+        </div>
+      </div>
+      <div class="hud-right">
+        <button id="export-btn" class="hud-btn">💾</button>
+        <button id="import-btn" class="hud-btn">📂</button>
+        <input type="file" id="import-file" style="display: none;" accept=".json">
+      </div>
+    </div>
+
+    <div id="main-container">
+      <!-- Toast Notifications -->
+      <div id="toast-container"></div>
+      
+      <!-- Window Toolbar -->
+      <div id="window-toolbar">
+        <!-- Window buttons will be added dynamically -->
+      </div>
+      
+      <!-- Game Canvas (full screen) -->
+      <canvas id="game-canvas"></canvas>
+      <div id="node-tooltip" class="tooltip"></div>
+      
+      <!-- Windows will be created dynamically by WindowManager -->
+    </div>
   </div>
+  <script src="/js/window-manager.js"></script>
   <script src="/js/app.js" type="module"></script>
 </body>
 </html>
