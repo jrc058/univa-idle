@@ -3586,7 +3586,7 @@ function showTechTooltip(techKey) {
   let unlocksText = '';
   const unlocks = Object.keys(TECH_DEFINITIONS).filter(k => {
     const t = TECH_DEFINITIONS[k];
-    return t.requirements.techs && t.requirements.techs.includes(key);
+    return t.requirements.techs && t.requirements.techs.includes(techKey);
   });
   if (unlocks.length > 0) {
     const unlockNames = unlocks.slice(0, 3).map(k => TECH_DEFINITIONS[k].name).join(', ');
