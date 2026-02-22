@@ -3607,11 +3607,11 @@ function updateTechTree() {
     const groupDef = TECH_GROUPS[groupKey];
     const branchColor = branchColors[groupDef.branch] || '#0af';
     
-    // Draw cluster background circle
+    // Draw cluster background circle (form-fit to nodes)
     const bgCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     bgCircle.setAttribute('cx', groupDef.x);
     bgCircle.setAttribute('cy', groupDef.y);
-    bgCircle.setAttribute('r', '280');
+    bgCircle.setAttribute('r', '200');
     bgCircle.setAttribute('fill', branchColor);
     bgCircle.setAttribute('opacity', '0.1');
     bgCircle.setAttribute('stroke', branchColor);
