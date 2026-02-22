@@ -1,947 +1,947 @@
 {
-  "biotech_cell_theory": {
-    "group": "biotech_tier1",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": 150.0,
-    "y": 259.8
-  },
-  "biotech_dna_structure": {
-    "group": "biotech_tier1",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": 210.0,
-    "y": 259.8
-  },
-  "biotech_protein_synthesis": {
-    "group": "biotech_tier1",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": 180.0,
-    "y": 311.8
-  },
-  "biotech_genetics": {
-    "group": "biotech_tier1",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": 120.0,
-    "y": 311.8
-  },
-  "biotech_gene_sequencing": {
-    "group": "biotech_tier1",
-    "orbit": 1,
-    "orbitIndex": 3,
-    "x": 90.0,
-    "y": 259.8
-  },
-  "biotech_genetic_markers": {
-    "group": "biotech_tier2",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": 275.0,
-    "y": 476.3
-  },
-  "biotech_gene_editing": {
-    "group": "biotech_tier2",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": 335.0,
-    "y": 476.3
-  },
-  "biotech_crispr": {
-    "group": "biotech_tier2",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": 305.0,
-    "y": 528.3
-  },
-  "biotech_gene_therapy": {
-    "group": "biotech_tier2",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": 245.0,
-    "y": 528.3
-  },
-  "biotech_stem_cells": {
-    "group": "biotech_tier2",
-    "orbit": 1,
-    "orbitIndex": 3,
-    "x": 215.0,
-    "y": 476.3
-  },
-  "biotech_pluripotent": {
-    "group": "biotech_tier3",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": 400.0,
-    "y": 692.8
-  },
-  "biotech_regeneration": {
-    "group": "biotech_tier3",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": 460.0,
-    "y": 692.8
-  },
-  "biotech_synthetic": {
-    "group": "biotech_tier3",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": 430.0,
-    "y": 744.8
-  },
-  "biotech_synthetic_dna": {
-    "group": "biotech_tier3",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": 370.0,
-    "y": 744.8
-  },
-  "biotech_synthetic_organisms": {
-    "group": "biotech_tier3",
-    "orbit": 1,
-    "orbitIndex": 3,
-    "x": 340.0,
-    "y": 692.8
-  },
-  "biotech_biofuels": {
-    "group": "biotech_tier4",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": 525.0,
-    "y": 909.3
-  },
-  "biotech_biocomputing": {
-    "group": "biotech_tier4",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": 585.0,
-    "y": 909.3
-  },
-  "biotech_dna_computing": {
-    "group": "biotech_tier4",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": 555.0,
-    "y": 961.3
-  },
-  "biotech_neural_tissue": {
-    "group": "biotech_tier4",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": 495.0,
-    "y": 961.3
-  },
-  "biotech_living_processors": {
-    "group": "biotech_tier4",
-    "orbit": 1,
-    "orbitIndex": 3,
-    "x": 465.0,
-    "y": 909.3
-  },
-  "biotech_immortality": {
-    "group": "biotech_tier5",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": 650.0,
-    "y": 1125.8
-  },
-  "biotech_telomeres": {
-    "group": "biotech_tier5",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": 710.0,
-    "y": 1125.8
-  },
-  "biotech_cellular_repair": {
-    "group": "biotech_tier5",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": 680.0,
-    "y": 1177.8
-  },
-  "biotech_consciousness_transfer": {
-    "group": "biotech_tier5",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": 620.0,
-    "y": 1177.8
-  },
-  "computing_logic": {
-    "group": "computing_tier1",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": 300.0,
-    "y": 0.0
-  },
-  "computing_transistors": {
-    "group": "computing_tier1",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": 360.0,
-    "y": 0.0
-  },
-  "computing_integrated_circuits": {
-    "group": "computing_tier1",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": 330.0,
-    "y": 52.0
-  },
-  "computing_architecture": {
-    "group": "computing_tier1",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": 270.0,
-    "y": 52.0
-  },
-  "computing_processors": {
-    "group": "computing_tier1",
-    "orbit": 1,
-    "orbitIndex": 3,
-    "x": 240.0,
-    "y": 0.0
-  },
-  "computing_memory": {
-    "group": "computing_tier2",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": 550.0,
-    "y": 0.0
-  },
-  "computing_parallel": {
-    "group": "computing_tier2",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": 610.0,
-    "y": 0.0
-  },
-  "computing_multicore": {
-    "group": "computing_tier2",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": 580.0,
-    "y": 52.0
-  },
-  "computing_gpu": {
-    "group": "computing_tier2",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": 520.0,
-    "y": 52.0
-  },
-  "computing_storage": {
-    "group": "computing_tier2",
-    "orbit": 1,
-    "orbitIndex": 3,
-    "x": 490.0,
-    "y": 0.0
-  },
-  "computing_ssd": {
-    "group": "computing_tier3",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": 800.0,
-    "y": 0.0
-  },
-  "computing_optical": {
-    "group": "computing_tier3",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": 860.0,
-    "y": 0.0
-  },
-  "computing_ai": {
-    "group": "computing_tier3",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": 830.0,
-    "y": 52.0
-  },
-  "computing_machine_learning": {
-    "group": "computing_tier3",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": 770.0,
-    "y": 52.0
-  },
-  "computing_neural_nets": {
-    "group": "computing_tier3",
-    "orbit": 1,
-    "orbitIndex": 3,
-    "x": 740.0,
-    "y": 0.0
-  },
-  "computing_deep_learning": {
-    "group": "computing_tier4",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": 1050.0,
-    "y": 0.0
-  },
-  "computing_quantum": {
-    "group": "computing_tier4",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": 1110.0,
-    "y": 0.0
-  },
-  "computing_qubits": {
-    "group": "computing_tier4",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": 1080.0,
-    "y": 52.0
-  },
-  "computing_quantum_gates": {
-    "group": "computing_tier4",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": 1020.0,
-    "y": 52.0
-  },
-  "computing_quantum_error": {
-    "group": "computing_tier5",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": 1300.0,
-    "y": 0.0
-  },
-  "computing_consciousness": {
-    "group": "computing_tier5",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": 1360.0,
-    "y": 0.0
-  },
-  "computing_brain_interface": {
-    "group": "computing_tier5",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": 1330.0,
-    "y": 52.0
-  },
-  "computing_mind_upload": {
-    "group": "computing_tier5",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": 1270.0,
-    "y": 52.0
-  },
-  "energy_solar_theory": {
-    "group": "energy_tier1",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": -150.0,
-    "y": 259.8
-  },
-  "energy_photovoltaics": {
-    "group": "energy_tier1",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": -90.0,
-    "y": 259.8
-  },
-  "energy_solar_panels": {
-    "group": "energy_tier1",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": -120.0,
-    "y": 311.8
-  },
-  "energy_wind": {
-    "group": "energy_tier1",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": -180.0,
-    "y": 311.8
-  },
-  "energy_turbines": {
-    "group": "energy_tier1",
-    "orbit": 1,
-    "orbitIndex": 3,
-    "x": -210.0,
-    "y": 259.8
-  },
-  "energy_fission_theory": {
-    "group": "energy_tier2",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": -275.0,
-    "y": 476.3
-  },
-  "energy_uranium_enrichment": {
-    "group": "energy_tier2",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": -215.0,
-    "y": 476.3
-  },
-  "energy_reactor_design": {
-    "group": "energy_tier2",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": -245.0,
-    "y": 528.3
-  },
-  "energy_fission_plants": {
-    "group": "energy_tier2",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": -305.0,
-    "y": 528.3
-  },
-  "energy_fusion_theory": {
-    "group": "energy_tier2",
-    "orbit": 1,
-    "orbitIndex": 3,
-    "x": -335.0,
-    "y": 476.3
-  },
-  "energy_plasma_containment": {
-    "group": "energy_tier3",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": -400.0,
-    "y": 692.8
-  },
-  "energy_magnetic_confinement": {
-    "group": "energy_tier3",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": -340.0,
-    "y": 692.8
-  },
-  "energy_inertial_confinement": {
-    "group": "energy_tier3",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": -370.0,
-    "y": 744.8
-  },
-  "energy_fusion_reactors": {
-    "group": "energy_tier3",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": -430.0,
-    "y": 744.8
-  },
-  "energy_antimatter_theory": {
-    "group": "energy_tier3",
-    "orbit": 1,
-    "orbitIndex": 3,
-    "x": -460.0,
-    "y": 692.8
-  },
-  "energy_antimatter_production": {
-    "group": "energy_tier4",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": -525.0,
-    "y": 909.3
-  },
-  "energy_antimatter_storage": {
-    "group": "energy_tier4",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": -465.0,
-    "y": 909.3
-  },
-  "energy_antimatter_reactors": {
-    "group": "energy_tier4",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": -495.0,
-    "y": 961.3
-  },
-  "energy_zero_point": {
-    "group": "energy_tier4",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": -555.0,
-    "y": 961.3
-  },
-  "energy_vacuum_fluctuations": {
-    "group": "energy_tier5",
-    "orbit": 0,
-    "orbitIndex": 0,
-    "x": -650.0,
-    "y": 1125.8
-  },
-  "energy_casimir_effect": {
-    "group": "energy_tier5",
-    "orbit": 1,
-    "orbitIndex": 0,
-    "x": -590.0,
-    "y": 1125.8
-  },
-  "dysonEngineering": {
-    "group": "energy_tier5",
-    "orbit": 1,
-    "orbitIndex": 1,
-    "x": -620.0,
-    "y": 1177.8
-  },
-  "stellarHarvesting": {
-    "group": "energy_tier5",
-    "orbit": 1,
-    "orbitIndex": 2,
-    "x": -680.0,
-    "y": 1177.8
-  },
   "materials_metallurgy": {
+    "x": -400.0,
+    "y": 0.0,
     "group": "materials_tier1",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": -300.0,
-    "y": 0.0
+    "orbitIndex": 0
   },
   "materials_iron": {
+    "x": -320.0,
+    "y": 0.0,
     "group": "materials_tier1",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": -240.0,
-    "y": 0.0
+    "orbitIndex": 0
   },
   "materials_aluminum": {
+    "x": -360.0,
+    "y": 69.3,
     "group": "materials_tier1",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": -270.0,
-    "y": 52.0
+    "orbitIndex": 1
   },
   "materials_copper": {
+    "x": -440.0,
+    "y": 69.3,
     "group": "materials_tier1",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": -330.0,
-    "y": 52.0
+    "orbitIndex": 2
   },
   "materials_semiconductors": {
+    "x": -480.0,
+    "y": 0.0,
     "group": "materials_tier1",
     "orbit": 1,
-    "orbitIndex": 3,
-    "x": -360.0,
-    "y": 0.0
+    "orbitIndex": 3
   },
   "materials_silicon": {
+    "x": -440.0,
+    "y": -69.3,
     "group": "materials_tier1",
     "orbit": 1,
-    "orbitIndex": 4,
-    "x": -330.0,
-    "y": -52.0
+    "orbitIndex": 4
   },
   "materials_doping": {
+    "x": -700.0,
+    "y": 0.0,
     "group": "materials_tier2",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": -550.0,
-    "y": 0.0
+    "orbitIndex": 0
   },
   "materials_alloys": {
+    "x": -620.0,
+    "y": 0.0,
     "group": "materials_tier2",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": -490.0,
-    "y": 0.0
+    "orbitIndex": 0
   },
   "materials_steel": {
+    "x": -660.0,
+    "y": 69.3,
     "group": "materials_tier2",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": -520.0,
-    "y": 52.0
+    "orbitIndex": 1
   },
   "materials_titanium": {
+    "x": -740.0,
+    "y": 69.3,
     "group": "materials_tier2",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": -580.0,
-    "y": 52.0
+    "orbitIndex": 2
   },
   "materials_superalloys": {
+    "x": -780.0,
+    "y": 0.0,
     "group": "materials_tier2",
     "orbit": 1,
-    "orbitIndex": 3,
-    "x": -610.0,
-    "y": 0.0
+    "orbitIndex": 3
   },
   "materials_composites": {
+    "x": -1000.0,
+    "y": 0.0,
     "group": "materials_tier3",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": -800.0,
-    "y": 0.0
+    "orbitIndex": 0
   },
   "materials_carbon_fiber": {
+    "x": -920.0,
+    "y": 0.0,
     "group": "materials_tier3",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": -740.0,
-    "y": 0.0
+    "orbitIndex": 0
   },
   "materials_ceramics": {
+    "x": -960.0,
+    "y": 69.3,
     "group": "materials_tier3",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": -770.0,
-    "y": 52.0
+    "orbitIndex": 1
   },
   "materials_nanotech": {
+    "x": -1040.0,
+    "y": 69.3,
     "group": "materials_tier3",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": -830.0,
-    "y": 52.0
+    "orbitIndex": 2
   },
   "materials_graphene": {
+    "x": -1080.0,
+    "y": 0.0,
     "group": "materials_tier3",
     "orbit": 1,
-    "orbitIndex": 3,
-    "x": -860.0,
-    "y": 0.0
+    "orbitIndex": 3
   },
   "materials_carbon_nanotubes": {
+    "x": -1300.0,
+    "y": 0.0,
     "group": "materials_tier4",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": -1050.0,
-    "y": 0.0
+    "orbitIndex": 0
   },
   "materials_quantum_dots": {
+    "x": -1220.0,
+    "y": 0.0,
     "group": "materials_tier4",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": -990.0,
-    "y": 0.0
+    "orbitIndex": 0
   },
   "materials_programmable": {
+    "x": -1260.0,
+    "y": 69.3,
     "group": "materials_tier4",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": -1020.0,
-    "y": 52.0
+    "orbitIndex": 1
   },
   "materials_shape_memory": {
+    "x": -1340.0,
+    "y": 69.3,
     "group": "materials_tier4",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": -1080.0,
-    "y": 52.0
+    "orbitIndex": 2
   },
   "materials_self_healing": {
+    "x": -1380.0,
+    "y": 0.0,
     "group": "materials_tier4",
     "orbit": 1,
-    "orbitIndex": 3,
-    "x": -1110.0,
-    "y": 0.0
+    "orbitIndex": 3
   },
   "materials_metamaterials": {
+    "x": -1600.0,
+    "y": 0.0,
     "group": "materials_tier5",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": -1300.0,
-    "y": 0.0
+    "orbitIndex": 0
   },
   "materials_exotic": {
+    "x": -1520.0,
+    "y": 0.0,
     "group": "materials_tier5",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": -1240.0,
-    "y": 0.0
+    "orbitIndex": 0
   },
   "materials_negative_mass": {
+    "x": -1560.0,
+    "y": 69.3,
     "group": "materials_tier5",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": -1270.0,
-    "y": 52.0
+    "orbitIndex": 1
   },
   "materials_strange_matter": {
+    "x": -1640.0,
+    "y": 69.3,
     "group": "materials_tier5",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": -1330.0,
-    "y": 52.0
+    "orbitIndex": 2
   },
-  "exoticMatter": {
-    "group": "materials_tier5",
+  "computing_logic": {
+    "x": 400.0,
+    "y": 0.0,
+    "group": "computing_tier1",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "computing_transistors": {
+    "x": 480.0,
+    "y": 0.0,
+    "group": "computing_tier1",
     "orbit": 1,
-    "orbitIndex": 3,
-    "x": -1360.0,
-    "y": 0.0
+    "orbitIndex": 0
+  },
+  "computing_integrated_circuits": {
+    "x": 440.0,
+    "y": 69.3,
+    "group": "computing_tier1",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "computing_architecture": {
+    "x": 360.0,
+    "y": 69.3,
+    "group": "computing_tier1",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "computing_processors": {
+    "x": 320.0,
+    "y": 0.0,
+    "group": "computing_tier1",
+    "orbit": 1,
+    "orbitIndex": 3
+  },
+  "computing_memory": {
+    "x": 700.0,
+    "y": 0.0,
+    "group": "computing_tier2",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "computing_parallel": {
+    "x": 780.0,
+    "y": 0.0,
+    "group": "computing_tier2",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "computing_multicore": {
+    "x": 740.0,
+    "y": 69.3,
+    "group": "computing_tier2",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "computing_gpu": {
+    "x": 660.0,
+    "y": 69.3,
+    "group": "computing_tier2",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "computing_storage": {
+    "x": 620.0,
+    "y": 0.0,
+    "group": "computing_tier2",
+    "orbit": 1,
+    "orbitIndex": 3
+  },
+  "computing_ssd": {
+    "x": 1000.0,
+    "y": 0.0,
+    "group": "computing_tier3",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "computing_optical": {
+    "x": 1080.0,
+    "y": 0.0,
+    "group": "computing_tier3",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "computing_ai": {
+    "x": 1040.0,
+    "y": 69.3,
+    "group": "computing_tier3",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "computing_machine_learning": {
+    "x": 960.0,
+    "y": 69.3,
+    "group": "computing_tier3",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "computing_neural_nets": {
+    "x": 920.0,
+    "y": 0.0,
+    "group": "computing_tier3",
+    "orbit": 1,
+    "orbitIndex": 3
+  },
+  "computing_deep_learning": {
+    "x": 1300.0,
+    "y": 0.0,
+    "group": "computing_tier4",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "computing_quantum": {
+    "x": 1380.0,
+    "y": 0.0,
+    "group": "computing_tier4",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "computing_qubits": {
+    "x": 1340.0,
+    "y": 69.3,
+    "group": "computing_tier4",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "computing_quantum_gates": {
+    "x": 1260.0,
+    "y": 69.3,
+    "group": "computing_tier4",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "computing_quantum_error": {
+    "x": 1600.0,
+    "y": 0.0,
+    "group": "computing_tier5",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "computing_consciousness": {
+    "x": 1680.0,
+    "y": 0.0,
+    "group": "computing_tier5",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "computing_brain_interface": {
+    "x": 1640.0,
+    "y": 69.3,
+    "group": "computing_tier5",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "computing_mind_upload": {
+    "x": 1560.0,
+    "y": 69.3,
+    "group": "computing_tier5",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "energy_solar_theory": {
+    "x": -200.0,
+    "y": 346.4,
+    "group": "energy_tier1",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "energy_photovoltaics": {
+    "x": -120.0,
+    "y": 346.4,
+    "group": "energy_tier1",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "energy_solar_panels": {
+    "x": -160.0,
+    "y": 415.7,
+    "group": "energy_tier1",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "energy_wind": {
+    "x": -240.0,
+    "y": 415.7,
+    "group": "energy_tier1",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "energy_turbines": {
+    "x": -280.0,
+    "y": 346.4,
+    "group": "energy_tier1",
+    "orbit": 1,
+    "orbitIndex": 3
+  },
+  "energy_fission_theory": {
+    "x": -350.0,
+    "y": 606.2,
+    "group": "energy_tier2",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "energy_uranium_enrichment": {
+    "x": -270.0,
+    "y": 606.2,
+    "group": "energy_tier2",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "energy_reactor_design": {
+    "x": -310.0,
+    "y": 675.5,
+    "group": "energy_tier2",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "energy_fission_plants": {
+    "x": -390.0,
+    "y": 675.5,
+    "group": "energy_tier2",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "energy_fusion_theory": {
+    "x": -430.0,
+    "y": 606.2,
+    "group": "energy_tier2",
+    "orbit": 1,
+    "orbitIndex": 3
+  },
+  "energy_plasma_containment": {
+    "x": -500.0,
+    "y": 866.0,
+    "group": "energy_tier3",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "energy_magnetic_confinement": {
+    "x": -420.0,
+    "y": 866.0,
+    "group": "energy_tier3",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "energy_inertial_confinement": {
+    "x": -460.0,
+    "y": 935.3,
+    "group": "energy_tier3",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "energy_fusion_reactors": {
+    "x": -540.0,
+    "y": 935.3,
+    "group": "energy_tier3",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "energy_antimatter_theory": {
+    "x": -580.0,
+    "y": 866.0,
+    "group": "energy_tier3",
+    "orbit": 1,
+    "orbitIndex": 3
+  },
+  "energy_antimatter_production": {
+    "x": -650.0,
+    "y": 1125.8,
+    "group": "energy_tier4",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "energy_antimatter_storage": {
+    "x": -570.0,
+    "y": 1125.8,
+    "group": "energy_tier4",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "energy_antimatter_reactors": {
+    "x": -610.0,
+    "y": 1195.1,
+    "group": "energy_tier4",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "energy_zero_point": {
+    "x": -690.0,
+    "y": 1195.1,
+    "group": "energy_tier4",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "energy_vacuum_fluctuations": {
+    "x": -800.0,
+    "y": 1385.6,
+    "group": "energy_tier5",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "energy_casimir_effect": {
+    "x": -720.0,
+    "y": 1385.6,
+    "group": "energy_tier5",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "biotech_cell_theory": {
+    "x": 200.0,
+    "y": 346.4,
+    "group": "biotech_tier1",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "biotech_dna_structure": {
+    "x": 280.0,
+    "y": 346.4,
+    "group": "biotech_tier1",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "biotech_protein_synthesis": {
+    "x": 240.0,
+    "y": 415.7,
+    "group": "biotech_tier1",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "biotech_genetics": {
+    "x": 160.0,
+    "y": 415.7,
+    "group": "biotech_tier1",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "biotech_gene_sequencing": {
+    "x": 120.0,
+    "y": 346.4,
+    "group": "biotech_tier1",
+    "orbit": 1,
+    "orbitIndex": 3
+  },
+  "biotech_genetic_markers": {
+    "x": 350.0,
+    "y": 606.2,
+    "group": "biotech_tier2",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "biotech_gene_editing": {
+    "x": 430.0,
+    "y": 606.2,
+    "group": "biotech_tier2",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "biotech_crispr": {
+    "x": 390.0,
+    "y": 675.5,
+    "group": "biotech_tier2",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "biotech_gene_therapy": {
+    "x": 310.0,
+    "y": 675.5,
+    "group": "biotech_tier2",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "biotech_stem_cells": {
+    "x": 270.0,
+    "y": 606.2,
+    "group": "biotech_tier2",
+    "orbit": 1,
+    "orbitIndex": 3
+  },
+  "biotech_pluripotent": {
+    "x": 500.0,
+    "y": 866.0,
+    "group": "biotech_tier3",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "biotech_regeneration": {
+    "x": 580.0,
+    "y": 866.0,
+    "group": "biotech_tier3",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "biotech_synthetic": {
+    "x": 540.0,
+    "y": 935.3,
+    "group": "biotech_tier3",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "biotech_synthetic_dna": {
+    "x": 460.0,
+    "y": 935.3,
+    "group": "biotech_tier3",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "biotech_synthetic_organisms": {
+    "x": 420.0,
+    "y": 866.0,
+    "group": "biotech_tier3",
+    "orbit": 1,
+    "orbitIndex": 3
+  },
+  "biotech_biofuels": {
+    "x": 650.0,
+    "y": 1125.8,
+    "group": "biotech_tier4",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "biotech_biocomputing": {
+    "x": 730.0,
+    "y": 1125.8,
+    "group": "biotech_tier4",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "biotech_dna_computing": {
+    "x": 690.0,
+    "y": 1195.1,
+    "group": "biotech_tier4",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "biotech_neural_tissue": {
+    "x": 610.0,
+    "y": 1195.1,
+    "group": "biotech_tier4",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "biotech_living_processors": {
+    "x": 570.0,
+    "y": 1125.8,
+    "group": "biotech_tier4",
+    "orbit": 1,
+    "orbitIndex": 3
+  },
+  "biotech_immortality": {
+    "x": 800.0,
+    "y": 1385.6,
+    "group": "biotech_tier5",
+    "orbit": 0,
+    "orbitIndex": 0
+  },
+  "biotech_telomeres": {
+    "x": 880.0,
+    "y": 1385.6,
+    "group": "biotech_tier5",
+    "orbit": 1,
+    "orbitIndex": 0
+  },
+  "biotech_cellular_repair": {
+    "x": 840.0,
+    "y": 1454.9,
+    "group": "biotech_tier5",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "biotech_consciousness_transfer": {
+    "x": 760.0,
+    "y": 1454.9,
+    "group": "biotech_tier5",
+    "orbit": 1,
+    "orbitIndex": 2
   },
   "propulsion_rocketry": {
+    "x": -200.0,
+    "y": -346.4,
     "group": "propulsion_tier1",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": -150.0,
-    "y": -259.8
+    "orbitIndex": 0
   },
   "propulsion_solid_fuel": {
+    "x": -120.0,
+    "y": -346.4,
     "group": "propulsion_tier1",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": -90.0,
-    "y": -259.8
+    "orbitIndex": 0
   },
   "propulsion_liquid_fuel": {
+    "x": -160.0,
+    "y": -277.1,
     "group": "propulsion_tier1",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": -120.0,
-    "y": -207.8
+    "orbitIndex": 1
   },
   "propulsion_hybrid": {
+    "x": -240.0,
+    "y": -277.1,
     "group": "propulsion_tier1",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": -180.0,
-    "y": -207.8
+    "orbitIndex": 2
   },
   "propulsion_electric": {
+    "x": -350.0,
+    "y": -606.2,
     "group": "propulsion_tier2",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": -275.0,
-    "y": -476.3
+    "orbitIndex": 0
   },
   "propulsion_ion_drives": {
+    "x": -270.0,
+    "y": -606.2,
     "group": "propulsion_tier2",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": -215.0,
-    "y": -476.3
+    "orbitIndex": 0
   },
   "propulsion_hall_effect": {
+    "x": -310.0,
+    "y": -536.9,
     "group": "propulsion_tier2",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": -245.0,
-    "y": -424.3
+    "orbitIndex": 1
   },
   "propulsion_vasimr": {
+    "x": -390.0,
+    "y": -536.9,
     "group": "propulsion_tier2",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": -305.0,
-    "y": -424.3
+    "orbitIndex": 2
   },
   "propulsion_nuclear": {
+    "x": -500.0,
+    "y": -866.0,
     "group": "propulsion_tier3",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": -400.0,
-    "y": -692.8
+    "orbitIndex": 0
   },
   "propulsion_nuclear_thermal": {
+    "x": -420.0,
+    "y": -866.0,
     "group": "propulsion_tier3",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": -340.0,
-    "y": -692.8
+    "orbitIndex": 0
   },
   "propulsion_nuclear_electric": {
+    "x": -460.0,
+    "y": -796.7,
     "group": "propulsion_tier3",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": -370.0,
-    "y": -640.8
+    "orbitIndex": 1
   },
   "propulsion_fusion": {
+    "x": -650.0,
+    "y": -1125.8,
     "group": "propulsion_tier4",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": -525.0,
-    "y": -909.3
+    "orbitIndex": 0
   },
   "propulsion_fusion_drives": {
+    "x": -570.0,
+    "y": -1125.8,
     "group": "propulsion_tier4",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": -465.0,
-    "y": -909.3
+    "orbitIndex": 0
   },
   "propulsion_antimatter_catalyzed": {
+    "x": -610.0,
+    "y": -1056.5,
     "group": "propulsion_tier4",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": -495.0,
-    "y": -857.3
+    "orbitIndex": 1
   },
   "propulsion_ftl": {
+    "x": -800.0,
+    "y": -1385.6,
     "group": "propulsion_tier5",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": -650.0,
-    "y": -1125.8
+    "orbitIndex": 0
   },
   "propulsion_alcubierre": {
+    "x": -720.0,
+    "y": -1385.6,
     "group": "propulsion_tier5",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": -590.0,
-    "y": -1125.8
+    "orbitIndex": 0
   },
   "propulsion_warp_field": {
+    "x": -760.0,
+    "y": -1316.3,
     "group": "propulsion_tier5",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": -620.0,
-    "y": -1073.8
+    "orbitIndex": 1
   },
   "sensors_optical": {
+    "x": 200.0,
+    "y": -346.4,
     "group": "sensors_tier1",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": 150.0,
-    "y": -259.8
+    "orbitIndex": 0
   },
   "sensors_cameras": {
+    "x": 280.0,
+    "y": -346.4,
     "group": "sensors_tier1",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": 210.0,
-    "y": -259.8
+    "orbitIndex": 0
   },
   "sensors_telescopes": {
+    "x": 240.0,
+    "y": -277.1,
     "group": "sensors_tier1",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": 180.0,
-    "y": -207.8
+    "orbitIndex": 1
   },
   "sensors_electromagnetic": {
+    "x": 160.0,
+    "y": -277.1,
     "group": "sensors_tier1",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": 120.0,
-    "y": -207.8
+    "orbitIndex": 2
   },
   "sensors_radio": {
+    "x": 120.0,
+    "y": -346.4,
     "group": "sensors_tier1",
     "orbit": 1,
-    "orbitIndex": 3,
-    "x": 90.0,
-    "y": -259.8
+    "orbitIndex": 3
   },
   "sensors_radar": {
+    "x": 350.0,
+    "y": -606.2,
     "group": "sensors_tier2",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": 275.0,
-    "y": -476.3
+    "orbitIndex": 0
   },
   "sensors_spectroscopy": {
+    "x": 430.0,
+    "y": -606.2,
     "group": "sensors_tier2",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": 335.0,
-    "y": -476.3
+    "orbitIndex": 0
   },
   "sensors_mass_spec": {
+    "x": 390.0,
+    "y": -536.9,
     "group": "sensors_tier2",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": 305.0,
-    "y": -424.3
+    "orbitIndex": 1
   },
   "sensors_infrared": {
+    "x": 310.0,
+    "y": -536.9,
     "group": "sensors_tier2",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": 245.0,
-    "y": -424.3
+    "orbitIndex": 2
   },
   "sensors_particle": {
+    "x": 270.0,
+    "y": -606.2,
     "group": "sensors_tier2",
     "orbit": 1,
-    "orbitIndex": 3,
-    "x": 215.0,
-    "y": -476.3
+    "orbitIndex": 3
   },
   "sensors_scintillators": {
+    "x": 500.0,
+    "y": -866.0,
     "group": "sensors_tier3",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": 400.0,
-    "y": -692.8
+    "orbitIndex": 0
   },
   "sensors_cloud_chambers": {
+    "x": 580.0,
+    "y": -866.0,
     "group": "sensors_tier3",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": 460.0,
-    "y": -692.8
+    "orbitIndex": 0
   },
   "sensors_quantum": {
+    "x": 540.0,
+    "y": -796.7,
     "group": "sensors_tier3",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": 430.0,
-    "y": -640.8
+    "orbitIndex": 1
   },
   "sensors_quantum_entanglement": {
+    "x": 460.0,
+    "y": -796.7,
     "group": "sensors_tier3",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": 370.0,
-    "y": -640.8
+    "orbitIndex": 2
   },
   "sensors_atomic_clocks": {
+    "x": 650.0,
+    "y": -1125.8,
     "group": "sensors_tier4",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": 525.0,
-    "y": -909.3
+    "orbitIndex": 0
   },
   "sensors_squid": {
+    "x": 730.0,
+    "y": -1125.8,
     "group": "sensors_tier4",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": 585.0,
-    "y": -909.3
+    "orbitIndex": 0
   },
   "sensors_gravity": {
+    "x": 690.0,
+    "y": -1056.5,
     "group": "sensors_tier4",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": 555.0,
-    "y": -857.3
+    "orbitIndex": 1
   },
   "sensors_ligo": {
+    "x": 610.0,
+    "y": -1056.5,
     "group": "sensors_tier4",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": 495.0,
-    "y": -857.3
+    "orbitIndex": 2
   },
   "sensors_gravitational_waves": {
+    "x": 800.0,
+    "y": -1385.6,
     "group": "sensors_tier5",
     "orbit": 0,
-    "orbitIndex": 0,
-    "x": 650.0,
-    "y": -1125.8
+    "orbitIndex": 0
   },
   "sensors_dark_matter": {
+    "x": 880.0,
+    "y": -1385.6,
     "group": "sensors_tier5",
     "orbit": 1,
-    "orbitIndex": 0,
-    "x": 710.0,
-    "y": -1125.8
+    "orbitIndex": 0
   },
   "sensors_wimp": {
+    "x": 840.0,
+    "y": -1316.3,
     "group": "sensors_tier5",
     "orbit": 1,
-    "orbitIndex": 1,
-    "x": 680.0,
-    "y": -1073.8
+    "orbitIndex": 1
   },
   "sensors_axion": {
+    "x": 760.0,
+    "y": -1316.3,
     "group": "sensors_tier5",
     "orbit": 1,
-    "orbitIndex": 2,
-    "x": 620.0,
-    "y": -1073.8
+    "orbitIndex": 2
+  },
+  "dysonEngineering": {
+    "x": -760.0,
+    "y": 1454.9,
+    "group": "energy_tier5",
+    "orbit": 1,
+    "orbitIndex": 1
+  },
+  "stellarHarvesting": {
+    "x": -840.0,
+    "y": 1454.9,
+    "group": "energy_tier5",
+    "orbit": 1,
+    "orbitIndex": 2
+  },
+  "exoticMatter": {
+    "x": -1680.0,
+    "y": 0.0,
+    "group": "materials_tier5",
+    "orbit": 1,
+    "orbitIndex": 3
   }
 }
