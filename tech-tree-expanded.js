@@ -513,7 +513,6 @@ const TECH_DEFINITIONS_EXPANDED = {
     cost: { info: 50000 },
     bonus: { allRates: 1.3 },
   },
-};
 
   
   // ===== ENERGY BRANCH (120°) =====
