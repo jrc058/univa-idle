@@ -3692,7 +3692,7 @@ function updateTechTree() {
   Object.keys(TECH_DEFINITIONS).forEach(key => {
     const def = TECH_DEFINITIONS[key];
     if (def.tier !== currentTier) return;
-    if (!def.position) return; // Check position exists before accessing
+    if (!def.position || !def.branch) return; // Only render actual tech tree nodes
     
     const x = def.position.x;
     const y = def.position.y;
@@ -3760,7 +3760,7 @@ function updateTechTree() {
     const def = TECH_DEFINITIONS[key];
     const tech = game.techs[key];
     if (def.tier !== currentTier) return;
-    if (!def.position) return; // Check position exists before accessing
+    if (!def.position || !def.branch) return; // Only render actual tech tree nodes
     
     const x = def.position.x;
     const y = def.position.y;
