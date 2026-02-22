@@ -541,6 +541,417 @@ Object.keys(PROJECT_DEFINITIONS).forEach(key => {
 // TECH TREE SYSTEM
 // ============================================================================
 
+const TECH_GROUPS = {
+  "biotech_tier1": {
+    "id": 0,
+    "branch": "biotech",
+    "tier": 1,
+    "x": 150.0,
+    "y": 259.8,
+    "nodes": [
+      "biotech_cell_theory",
+      "biotech_dna_structure",
+      "biotech_protein_synthesis",
+      "biotech_genetics",
+      "biotech_gene_sequencing"
+    ]
+  },
+  "biotech_tier2": {
+    "id": 1,
+    "branch": "biotech",
+    "tier": 2,
+    "x": 275.0,
+    "y": 476.3,
+    "nodes": [
+      "biotech_genetic_markers",
+      "biotech_gene_editing",
+      "biotech_crispr",
+      "biotech_gene_therapy",
+      "biotech_stem_cells"
+    ]
+  },
+  "biotech_tier3": {
+    "id": 2,
+    "branch": "biotech",
+    "tier": 3,
+    "x": 400.0,
+    "y": 692.8,
+    "nodes": [
+      "biotech_pluripotent",
+      "biotech_regeneration",
+      "biotech_synthetic",
+      "biotech_synthetic_dna",
+      "biotech_synthetic_organisms"
+    ]
+  },
+  "biotech_tier4": {
+    "id": 3,
+    "branch": "biotech",
+    "tier": 4,
+    "x": 525.0,
+    "y": 909.3,
+    "nodes": [
+      "biotech_biofuels",
+      "biotech_biocomputing",
+      "biotech_dna_computing",
+      "biotech_neural_tissue",
+      "biotech_living_processors"
+    ]
+  },
+  "biotech_tier5": {
+    "id": 4,
+    "branch": "biotech",
+    "tier": 5,
+    "x": 650.0,
+    "y": 1125.8,
+    "nodes": [
+      "biotech_immortality",
+      "biotech_telomeres",
+      "biotech_cellular_repair",
+      "biotech_consciousness_transfer"
+    ]
+  },
+  "computing_tier1": {
+    "id": 5,
+    "branch": "computing",
+    "tier": 1,
+    "x": 300.0,
+    "y": 0.0,
+    "nodes": [
+      "computing_logic",
+      "computing_transistors",
+      "computing_integrated_circuits",
+      "computing_architecture",
+      "computing_processors"
+    ]
+  },
+  "computing_tier2": {
+    "id": 6,
+    "branch": "computing",
+    "tier": 2,
+    "x": 550.0,
+    "y": 0.0,
+    "nodes": [
+      "computing_memory",
+      "computing_parallel",
+      "computing_multicore",
+      "computing_gpu",
+      "computing_storage"
+    ]
+  },
+  "computing_tier3": {
+    "id": 7,
+    "branch": "computing",
+    "tier": 3,
+    "x": 800.0,
+    "y": 0.0,
+    "nodes": [
+      "computing_ssd",
+      "computing_optical",
+      "computing_ai",
+      "computing_machine_learning",
+      "computing_neural_nets"
+    ]
+  },
+  "computing_tier4": {
+    "id": 8,
+    "branch": "computing",
+    "tier": 4,
+    "x": 1050.0,
+    "y": 0.0,
+    "nodes": [
+      "computing_deep_learning",
+      "computing_quantum",
+      "computing_qubits",
+      "computing_quantum_gates"
+    ]
+  },
+  "computing_tier5": {
+    "id": 9,
+    "branch": "computing",
+    "tier": 5,
+    "x": 1300.0,
+    "y": 0.0,
+    "nodes": [
+      "computing_quantum_error",
+      "computing_consciousness",
+      "computing_brain_interface",
+      "computing_mind_upload"
+    ]
+  },
+  "energy_tier1": {
+    "id": 10,
+    "branch": "energy",
+    "tier": 1,
+    "x": -150.0,
+    "y": 259.8,
+    "nodes": [
+      "energy_solar_theory",
+      "energy_photovoltaics",
+      "energy_solar_panels",
+      "energy_wind",
+      "energy_turbines"
+    ]
+  },
+  "energy_tier2": {
+    "id": 11,
+    "branch": "energy",
+    "tier": 2,
+    "x": -275.0,
+    "y": 476.3,
+    "nodes": [
+      "energy_fission_theory",
+      "energy_uranium_enrichment",
+      "energy_reactor_design",
+      "energy_fission_plants",
+      "energy_fusion_theory"
+    ]
+  },
+  "energy_tier3": {
+    "id": 12,
+    "branch": "energy",
+    "tier": 3,
+    "x": -400.0,
+    "y": 692.8,
+    "nodes": [
+      "energy_plasma_containment",
+      "energy_magnetic_confinement",
+      "energy_inertial_confinement",
+      "energy_fusion_reactors",
+      "energy_antimatter_theory"
+    ]
+  },
+  "energy_tier4": {
+    "id": 13,
+    "branch": "energy",
+    "tier": 4,
+    "x": -525.0,
+    "y": 909.3,
+    "nodes": [
+      "energy_antimatter_production",
+      "energy_antimatter_storage",
+      "energy_antimatter_reactors",
+      "energy_zero_point"
+    ]
+  },
+  "energy_tier5": {
+    "id": 14,
+    "branch": "energy",
+    "tier": 5,
+    "x": -650.0,
+    "y": 1125.8,
+    "nodes": [
+      "energy_vacuum_fluctuations",
+      "energy_casimir_effect",
+      "dysonEngineering",
+      "stellarHarvesting"
+    ]
+  },
+  "materials_tier1": {
+    "id": 15,
+    "branch": "materials",
+    "tier": 1,
+    "x": -300.0,
+    "y": 0.0,
+    "nodes": [
+      "materials_metallurgy",
+      "materials_iron",
+      "materials_aluminum",
+      "materials_copper",
+      "materials_semiconductors",
+      "materials_silicon"
+    ]
+  },
+  "materials_tier2": {
+    "id": 16,
+    "branch": "materials",
+    "tier": 2,
+    "x": -550.0,
+    "y": 0.0,
+    "nodes": [
+      "materials_doping",
+      "materials_alloys",
+      "materials_steel",
+      "materials_titanium",
+      "materials_superalloys"
+    ]
+  },
+  "materials_tier3": {
+    "id": 17,
+    "branch": "materials",
+    "tier": 3,
+    "x": -800.0,
+    "y": 0.0,
+    "nodes": [
+      "materials_composites",
+      "materials_carbon_fiber",
+      "materials_ceramics",
+      "materials_nanotech",
+      "materials_graphene"
+    ]
+  },
+  "materials_tier4": {
+    "id": 18,
+    "branch": "materials",
+    "tier": 4,
+    "x": -1050.0,
+    "y": 0.0,
+    "nodes": [
+      "materials_carbon_nanotubes",
+      "materials_quantum_dots",
+      "materials_programmable",
+      "materials_shape_memory",
+      "materials_self_healing"
+    ]
+  },
+  "materials_tier5": {
+    "id": 19,
+    "branch": "materials",
+    "tier": 5,
+    "x": -1300.0,
+    "y": 0.0,
+    "nodes": [
+      "materials_metamaterials",
+      "materials_exotic",
+      "materials_negative_mass",
+      "materials_strange_matter",
+      "exoticMatter"
+    ]
+  },
+  "propulsion_tier1": {
+    "id": 20,
+    "branch": "propulsion",
+    "tier": 1,
+    "x": -150.0,
+    "y": -259.8,
+    "nodes": [
+      "propulsion_rocketry",
+      "propulsion_solid_fuel",
+      "propulsion_liquid_fuel",
+      "propulsion_hybrid"
+    ]
+  },
+  "propulsion_tier2": {
+    "id": 21,
+    "branch": "propulsion",
+    "tier": 2,
+    "x": -275.0,
+    "y": -476.3,
+    "nodes": [
+      "propulsion_electric",
+      "propulsion_ion_drives",
+      "propulsion_hall_effect",
+      "propulsion_vasimr"
+    ]
+  },
+  "propulsion_tier3": {
+    "id": 22,
+    "branch": "propulsion",
+    "tier": 3,
+    "x": -400.0,
+    "y": -692.8,
+    "nodes": [
+      "propulsion_nuclear",
+      "propulsion_nuclear_thermal",
+      "propulsion_nuclear_electric"
+    ]
+  },
+  "propulsion_tier4": {
+    "id": 23,
+    "branch": "propulsion",
+    "tier": 4,
+    "x": -525.0,
+    "y": -909.3,
+    "nodes": [
+      "propulsion_fusion",
+      "propulsion_fusion_drives",
+      "propulsion_antimatter_catalyzed"
+    ]
+  },
+  "propulsion_tier5": {
+    "id": 24,
+    "branch": "propulsion",
+    "tier": 5,
+    "x": -650.0,
+    "y": -1125.8,
+    "nodes": [
+      "propulsion_ftl",
+      "propulsion_alcubierre",
+      "propulsion_warp_field"
+    ]
+  },
+  "sensors_tier1": {
+    "id": 25,
+    "branch": "sensors",
+    "tier": 1,
+    "x": 150.0,
+    "y": -259.8,
+    "nodes": [
+      "sensors_optical",
+      "sensors_cameras",
+      "sensors_telescopes",
+      "sensors_electromagnetic",
+      "sensors_radio"
+    ]
+  },
+  "sensors_tier2": {
+    "id": 26,
+    "branch": "sensors",
+    "tier": 2,
+    "x": 275.0,
+    "y": -476.3,
+    "nodes": [
+      "sensors_radar",
+      "sensors_spectroscopy",
+      "sensors_mass_spec",
+      "sensors_infrared",
+      "sensors_particle"
+    ]
+  },
+  "sensors_tier3": {
+    "id": 27,
+    "branch": "sensors",
+    "tier": 3,
+    "x": 400.0,
+    "y": -692.8,
+    "nodes": [
+      "sensors_scintillators",
+      "sensors_cloud_chambers",
+      "sensors_quantum",
+      "sensors_quantum_entanglement"
+    ]
+  },
+  "sensors_tier4": {
+    "id": 28,
+    "branch": "sensors",
+    "tier": 4,
+    "x": 525.0,
+    "y": -909.3,
+    "nodes": [
+      "sensors_atomic_clocks",
+      "sensors_squid",
+      "sensors_gravity",
+      "sensors_ligo"
+    ]
+  },
+  "sensors_tier5": {
+    "id": 29,
+    "branch": "sensors",
+    "tier": 5,
+    "x": 650.0,
+    "y": -1125.8,
+    "nodes": [
+      "sensors_gravitational_waves",
+      "sensors_dark_matter",
+      "sensors_wimp",
+      "sensors_axion"
+    ]
+  }
+};
+
+const ORBIT_RADII = [0, 60, 120, 180];
+const NODES_PER_ORBIT = [1, 6, 12, 18];
+
 const TECH_DEFINITIONS = {
   // ============================================================================
   // TYPE 0 - PLANETARY MASTERY (~150-200 nodes)
@@ -554,7 +965,7 @@ const TECH_DEFINITIONS = {
     desc: 'Metal extraction & processing',
     branch: 'materials',
     tier: 0,
-    position: { angle: 175.0, ring: 1.0 },
+    position: { x: -300.0, y: 0.0, group: 'materials_tier1', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 1e6 },
     cost: { info: 500 },
     bonus: { matterRate: 1.05 },
@@ -564,7 +975,7 @@ const TECH_DEFINITIONS = {
     desc: 'Basic structural metal',
     branch: 'materials',
     tier: 0,
-    position: { angle: 185.0, ring: 5.0 },
+    position: { x: -240.0, y: 0.0, group: 'materials_tier1', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 1e6, techs: ['materials_metallurgy'] },
     cost: { info: 600 },
     bonus: { matterRate: 1.03 },
@@ -574,7 +985,7 @@ const TECH_DEFINITIONS = {
     desc: 'Lightweight metal',
     branch: 'materials',
     tier: 0,
-    position: { angle: 175.0, ring: 5.8 },
+    position: { x: -270.0, y: 52.0, group: 'materials_tier1', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 1e6, techs: ['materials_metallurgy'] },
     cost: { info: 600 },
     bonus: { matterRate: 1.03 },
@@ -584,7 +995,7 @@ const TECH_DEFINITIONS = {
     desc: 'Conductive metal',
     branch: 'materials',
     tier: 0,
-    position: { angle: 180.0, ring: 1.8 },
+    position: { x: -330.0, y: 52.0, group: 'materials_tier1', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 1.2e6, techs: ['materials_metallurgy'] },
     cost: { info: 700 },
     bonus: { matterRate: 1.03 },
@@ -595,7 +1006,7 @@ const TECH_DEFINITIONS = {
     desc: 'Electronic materials',
     branch: 'materials',
     tier: 0,
-    position: { angle: 180.0, ring: 6.6 },
+    position: { x: -360.0, y: 0.0, group: 'materials_tier1', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 1.5e6 },
     cost: { info: 800 },
     bonus: { infoRate: 1.05 },
@@ -605,7 +1016,7 @@ const TECH_DEFINITIONS = {
     desc: 'High-purity silicon',
     branch: 'materials',
     tier: 0,
-    position: { angle: 185.0, ring: 2.6 },
+    position: { x: -330.0, y: -52.0, group: 'materials_tier1', orbit: 1, orbitIndex: 4 },
     requirements: { reach: 1.5e6, techs: ['materials_semiconductors'] },
     cost: { info: 900 },
     bonus: { infoRate: 1.03 },
@@ -615,7 +1026,7 @@ const TECH_DEFINITIONS = {
     desc: 'N-type & P-type materials',
     branch: 'materials',
     tier: 0,
-    position: { angle: 185.0, ring: 12.2 },
+    position: { x: -550.0, y: 0.0, group: 'materials_tier2', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 1.8e6, techs: ['materials_silicon'] },
     cost: { info: 1000 },
     bonus: { infoRate: 1.03 },
@@ -627,7 +1038,7 @@ const TECH_DEFINITIONS = {
     desc: 'Mixed metal compounds',
     branch: 'materials',
     tier: 0,
-    position: { angle: 175.0, ring: 3.4 },
+    position: { x: -490.0, y: 0.0, group: 'materials_tier2', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 3e6, techs: ['materials_iron', 'materials_aluminum'] },
     cost: { info: 2000 },
     bonus: { matterRate: 1.08 },
@@ -637,7 +1048,7 @@ const TECH_DEFINITIONS = {
     desc: 'Iron-carbon alloy',
     branch: 'materials',
     tier: 0,
-    position: { angle: 175.0, ring: 8.2 },
+    position: { x: -520.0, y: 52.0, group: 'materials_tier2', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 3e6, techs: ['materials_alloys', 'materials_iron'] },
     cost: { info: 2200 },
     bonus: { matterRate: 1.05 },
@@ -647,7 +1058,7 @@ const TECH_DEFINITIONS = {
     desc: 'Lightweight & strong',
     branch: 'materials',
     tier: 0,
-    position: { angle: 180.0, ring: 9.0 },
+    position: { x: -580.0, y: 52.0, group: 'materials_tier2', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 3.5e6, techs: ['materials_alloys'] },
     cost: { info: 2500 },
     bonus: { matterRate: 1.05 },
@@ -657,7 +1068,7 @@ const TECH_DEFINITIONS = {
     desc: 'High-temperature materials',
     branch: 'materials',
     tier: 0,
-    position: { angle: 180.0, ring: 11.4 },
+    position: { x: -610.0, y: 0.0, group: 'materials_tier2', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 4e6, techs: ['materials_steel', 'materials_titanium'] },
     cost: { info: 3000 },
     bonus: { matterRate: 1.06 },
@@ -668,7 +1079,7 @@ const TECH_DEFINITIONS = {
     desc: 'Multi-material structures',
     branch: 'materials',
     tier: 0,
-    position: { angle: 185.0, ring: 7.4 },
+    position: { x: -800.0, y: 0.0, group: 'materials_tier3', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 3.5e6, techs: ['materials_alloys'] },
     cost: { info: 2500 },
     bonus: { matterRate: 1.06 },
@@ -678,7 +1089,7 @@ const TECH_DEFINITIONS = {
     desc: 'Lightweight composite',
     branch: 'materials',
     tier: 0,
-    position: { angle: 185.0, ring: 9.8 },
+    position: { x: -740.0, y: 0.0, group: 'materials_tier3', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 4e6, techs: ['materials_composites'] },
     cost: { info: 2800 },
     bonus: { matterRate: 1.04 },
@@ -688,7 +1099,7 @@ const TECH_DEFINITIONS = {
     desc: 'Heat-resistant materials',
     branch: 'materials',
     tier: 0,
-    position: { angle: 175.0, ring: 10.6 },
+    position: { x: -770.0, y: 52.0, group: 'materials_tier3', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 4e6, techs: ['materials_composites'] },
     cost: { info: 2800 },
     bonus: { matterRate: 1.04 },
@@ -700,7 +1111,7 @@ const TECH_DEFINITIONS = {
     desc: 'Molecular-scale engineering',
     branch: 'materials',
     tier: 0,
-    position: { angle: 180.0, ring: 21.0 },
+    position: { x: -830.0, y: 52.0, group: 'materials_tier3', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 8e6, techs: ['materials_superalloys', 'materials_carbon_fiber'] },
     cost: { info: 5000 },
     bonus: { matterRate: 1.12 },
@@ -710,7 +1121,7 @@ const TECH_DEFINITIONS = {
     desc: 'Single-layer carbon',
     branch: 'materials',
     tier: 0,
-    position: { angle: 180.0, ring: 13.8 },
+    position: { x: -860.0, y: 0.0, group: 'materials_tier3', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 9e6, techs: ['materials_nanotech'] },
     cost: { info: 6000 },
     bonus: { matterRate: 1.06 },
@@ -720,7 +1131,7 @@ const TECH_DEFINITIONS = {
     desc: 'Cylindrical carbon structures',
     branch: 'materials',
     tier: 0,
-    position: { angle: 185.0, ring: 14.6 },
+    position: { x: -1050.0, y: 0.0, group: 'materials_tier4', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 9e6, techs: ['materials_nanotech'] },
     cost: { info: 6000 },
     bonus: { matterRate: 1.06 },
@@ -730,7 +1141,7 @@ const TECH_DEFINITIONS = {
     desc: 'Nanoscale semiconductors',
     branch: 'materials',
     tier: 0,
-    position: { angle: 175.0, ring: 15.4 },
+    position: { x: -990.0, y: 0.0, group: 'materials_tier4', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 1e7, techs: ['materials_graphene', 'materials_carbon_nanotubes'] },
     cost: { info: 7000 },
     bonus: { infoRate: 1.08 },
@@ -742,7 +1153,7 @@ const TECH_DEFINITIONS = {
     desc: 'Shape-shifting materials',
     branch: 'materials',
     tier: 0,
-    position: { angle: 175.0, ring: 13.0 },
+    position: { x: -1020.0, y: 52.0, group: 'materials_tier4', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 3e7, techs: ['materials_quantum_dots'] },
     cost: { info: 15000 },
     bonus: { matterRate: 1.2 },
@@ -752,7 +1163,7 @@ const TECH_DEFINITIONS = {
     desc: 'Temperature-responsive metals',
     branch: 'materials',
     tier: 0,
-    position: { angle: 180.0, ring: 16.2 },
+    position: { x: -1080.0, y: 52.0, group: 'materials_tier4', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 3.5e7, techs: ['materials_programmable'] },
     cost: { info: 18000 },
     bonus: { matterRate: 1.08 },
@@ -762,7 +1173,7 @@ const TECH_DEFINITIONS = {
     desc: 'Auto-repair structures',
     branch: 'materials',
     tier: 0,
-    position: { angle: 185.0, ring: 17.0 },
+    position: { x: -1110.0, y: 0.0, group: 'materials_tier4', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 3.5e7, techs: ['materials_programmable'] },
     cost: { info: 18000 },
     bonus: { matterRate: 1.08 },
@@ -772,7 +1183,7 @@ const TECH_DEFINITIONS = {
     desc: 'Engineered properties',
     branch: 'materials',
     tier: 0,
-    position: { angle: 175.0, ring: 17.8 },
+    position: { x: -1300.0, y: 0.0, group: 'materials_tier5', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 4e7, techs: ['materials_shape_memory', 'materials_self_healing'] },
     cost: { info: 20000 },
     bonus: { matterRate: 1.1 },
@@ -784,7 +1195,7 @@ const TECH_DEFINITIONS = {
     desc: 'Beyond normal physics',
     branch: 'materials',
     tier: 0,
-    position: { angle: 180.0, ring: 18.6 },
+    position: { x: -1240.0, y: 0.0, group: 'materials_tier5', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 8e7, techs: ['materials_metamaterials'] },
     cost: { info: 40000 },
     bonus: { matterRate: 1.5 },
@@ -794,7 +1205,7 @@ const TECH_DEFINITIONS = {
     desc: 'Repulsive gravity',
     branch: 'materials',
     tier: 0,
-    position: { angle: 185.0, ring: 19.4 },
+    position: { x: -1270.0, y: 52.0, group: 'materials_tier5', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 9e7, techs: ['materials_exotic'] },
     cost: { info: 50000 },
     bonus: { matterRate: 1.15 },
@@ -804,7 +1215,7 @@ const TECH_DEFINITIONS = {
     desc: 'Quark-based materials',
     branch: 'materials',
     tier: 0,
-    position: { angle: 175.0, ring: 20.2 },
+    position: { x: -1330.0, y: 52.0, group: 'materials_tier5', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 9e7, techs: ['materials_exotic'] },
     cost: { info: 50000 },
     bonus: { energyRate: 1.15 },
@@ -818,7 +1229,7 @@ const TECH_DEFINITIONS = {
     desc: 'Binary computation',
     branch: 'computing',
     tier: 0,
-    position: { angle: -5.0, ring: 1.0 },
+    position: { x: 300.0, y: 0.0, group: 'computing_tier1', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 1e6 },
     cost: { info: 500 },
     bonus: { infoRate: 1.05 },
@@ -828,7 +1239,7 @@ const TECH_DEFINITIONS = {
     desc: 'Electronic switches',
     branch: 'computing',
     tier: 0,
-    position: { angle: -5.0, ring: 3.4 },
+    position: { x: 360.0, y: 0.0, group: 'computing_tier1', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 1.2e6, techs: ['computing_logic', 'materials_silicon'] },
     cost: { info: 700 },
     bonus: { infoRate: 1.04 },
@@ -838,7 +1249,7 @@ const TECH_DEFINITIONS = {
     desc: 'Chips with multiple components',
     branch: 'computing',
     tier: 0,
-    position: { angle: 0.0, ring: 4.2 },
+    position: { x: 330.0, y: 52.0, group: 'computing_tier1', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 1.5e6, techs: ['computing_transistors'] },
     cost: { info: 900 },
     bonus: { infoRate: 1.04 },
@@ -849,7 +1260,7 @@ const TECH_DEFINITIONS = {
     desc: 'System design',
     branch: 'computing',
     tier: 0,
-    position: { angle: 0.0, ring: 1.8 },
+    position: { x: 270.0, y: 52.0, group: 'computing_tier1', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 1.8e6, techs: ['computing_integrated_circuits'] },
     cost: { info: 1100 },
     bonus: { infoRate: 1.06 },
@@ -859,7 +1270,7 @@ const TECH_DEFINITIONS = {
     desc: 'CPU technology',
     branch: 'computing',
     tier: 0,
-    position: { angle: 0.0, ring: 9.0 },
+    position: { x: 240.0, y: 0.0, group: 'computing_tier1', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 2e6, techs: ['computing_architecture'] },
     cost: { info: 1300 },
     bonus: { infoRate: 1.05 },
@@ -869,7 +1280,7 @@ const TECH_DEFINITIONS = {
     desc: 'Data storage',
     branch: 'computing',
     tier: 0,
-    position: { angle: 5.0, ring: 9.8 },
+    position: { x: 550.0, y: 0.0, group: 'computing_tier2', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 2e6, techs: ['computing_architecture'] },
     cost: { info: 1300 },
     bonus: { infoRate: 1.05 },
@@ -881,7 +1292,7 @@ const TECH_DEFINITIONS = {
     desc: 'Multiple simultaneous operations',
     branch: 'computing',
     tier: 0,
-    position: { angle: 5.0, ring: 2.6 },
+    position: { x: 610.0, y: 0.0, group: 'computing_tier2', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 3e6, techs: ['computing_processors'] },
     cost: { info: 2000 },
     bonus: { infoRate: 1.1 },
@@ -891,7 +1302,7 @@ const TECH_DEFINITIONS = {
     desc: 'Multiple CPUs on one chip',
     branch: 'computing',
     tier: 0,
-    position: { angle: 5.0, ring: 5.0 },
+    position: { x: 580.0, y: 52.0, group: 'computing_tier2', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 3.5e6, techs: ['computing_parallel'] },
     cost: { info: 2500 },
     bonus: { infoRate: 1.06 },
@@ -901,7 +1312,7 @@ const TECH_DEFINITIONS = {
     desc: 'Massively parallel computation',
     branch: 'computing',
     tier: 0,
-    position: { angle: -5.0, ring: 5.8 },
+    position: { x: 520.0, y: 52.0, group: 'computing_tier2', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 3.5e6, techs: ['computing_parallel'] },
     cost: { info: 2500 },
     bonus: { infoRate: 1.06 },
@@ -912,7 +1323,7 @@ const TECH_DEFINITIONS = {
     desc: 'Persistent memory',
     branch: 'computing',
     tier: 0,
-    position: { angle: 0.0, ring: 6.6 },
+    position: { x: 490.0, y: 0.0, group: 'computing_tier2', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 4e6, techs: ['computing_memory'] },
     cost: { info: 3000 },
     bonus: { infoRate: 1.08 },
@@ -922,7 +1333,7 @@ const TECH_DEFINITIONS = {
     desc: 'Flash memory storage',
     branch: 'computing',
     tier: 0,
-    position: { angle: 5.0, ring: 7.4 },
+    position: { x: 800.0, y: 0.0, group: 'computing_tier3', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 4.5e6, techs: ['computing_storage'] },
     cost: { info: 3500 },
     bonus: { infoRate: 1.05 },
@@ -932,7 +1343,7 @@ const TECH_DEFINITIONS = {
     desc: 'Laser-based data',
     branch: 'computing',
     tier: 0,
-    position: { angle: -5.0, ring: 8.2 },
+    position: { x: 860.0, y: 0.0, group: 'computing_tier3', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 4.5e6, techs: ['computing_storage'] },
     cost: { info: 3500 },
     bonus: { infoRate: 1.05 },
@@ -944,7 +1355,7 @@ const TECH_DEFINITIONS = {
     desc: 'Machine intelligence',
     branch: 'computing',
     tier: 0,
-    position: { angle: 0.0, ring: 18.6 },
+    position: { x: 830.0, y: 52.0, group: 'computing_tier3', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 8e6, techs: ['computing_multicore', 'computing_gpu'] },
     cost: { info: 5000 },
     bonus: { allRates: 1.15 },
@@ -954,7 +1365,7 @@ const TECH_DEFINITIONS = {
     desc: 'Pattern recognition',
     branch: 'computing',
     tier: 0,
-    position: { angle: 0.0, ring: 11.4 },
+    position: { x: 770.0, y: 52.0, group: 'computing_tier3', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 9e6, techs: ['computing_ai'] },
     cost: { info: 6000 },
     bonus: { infoRate: 1.08 },
@@ -964,7 +1375,7 @@ const TECH_DEFINITIONS = {
     desc: 'Brain-inspired computing',
     branch: 'computing',
     tier: 0,
-    position: { angle: 5.0, ring: 12.2 },
+    position: { x: 740.0, y: 0.0, group: 'computing_tier3', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 9e6, techs: ['computing_ai'] },
     cost: { info: 6000 },
     bonus: { infoRate: 1.08 },
@@ -974,7 +1385,7 @@ const TECH_DEFINITIONS = {
     desc: 'Multi-layer networks',
     branch: 'computing',
     tier: 0,
-    position: { angle: -5.0, ring: 13.0 },
+    position: { x: 1050.0, y: 0.0, group: 'computing_tier4', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 1e7, techs: ['computing_neural_nets'] },
     cost: { info: 7000 },
     bonus: { infoRate: 1.1 },
@@ -986,7 +1397,7 @@ const TECH_DEFINITIONS = {
     desc: 'Superposition & entanglement',
     branch: 'computing',
     tier: 0,
-    position: { angle: -5.0, ring: 10.6 },
+    position: { x: 1110.0, y: 0.0, group: 'computing_tier4', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 3e7, techs: ['computing_deep_learning'] },
     cost: { info: 15000 },
     bonus: { infoRate: 1.25 },
@@ -996,7 +1407,7 @@ const TECH_DEFINITIONS = {
     desc: 'Quantum bits',
     branch: 'computing',
     tier: 0,
-    position: { angle: 0.0, ring: 13.8 },
+    position: { x: 1080.0, y: 52.0, group: 'computing_tier4', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 3.5e7, techs: ['computing_quantum', 'materials_quantum_dots'] },
     cost: { info: 18000 },
     bonus: { infoRate: 1.12 },
@@ -1006,7 +1417,7 @@ const TECH_DEFINITIONS = {
     desc: 'Quantum logic operations',
     branch: 'computing',
     tier: 0,
-    position: { angle: 5.0, ring: 14.6 },
+    position: { x: 1020.0, y: 52.0, group: 'computing_tier4', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 3.5e7, techs: ['computing_qubits'] },
     cost: { info: 18000 },
     bonus: { infoRate: 1.12 },
@@ -1016,7 +1427,7 @@ const TECH_DEFINITIONS = {
     desc: 'Stabilize quantum states',
     branch: 'computing',
     tier: 0,
-    position: { angle: -5.0, ring: 15.4 },
+    position: { x: 1300.0, y: 0.0, group: 'computing_tier5', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 4e7, techs: ['computing_quantum_gates'] },
     cost: { info: 20000 },
     bonus: { infoRate: 1.15 },
@@ -1028,7 +1439,7 @@ const TECH_DEFINITIONS = {
     desc: 'Artificial minds',
     branch: 'computing',
     tier: 0,
-    position: { angle: 0.0, ring: 16.2 },
+    position: { x: 1360.0, y: 0.0, group: 'computing_tier5', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 8e7, techs: ['computing_quantum_error'] },
     cost: { info: 40000 },
     bonus: { infoRate: 1.5 },
@@ -1038,7 +1449,7 @@ const TECH_DEFINITIONS = {
     desc: 'Direct neural connection',
     branch: 'computing',
     tier: 0,
-    position: { angle: 5.0, ring: 17.0 },
+    position: { x: 1330.0, y: 52.0, group: 'computing_tier5', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 9e7, techs: ['computing_consciousness'] },
     cost: { info: 50000 },
     bonus: { infoRate: 1.2 },
@@ -1048,7 +1459,7 @@ const TECH_DEFINITIONS = {
     desc: 'Transfer consciousness to digital',
     branch: 'computing',
     tier: 0,
-    position: { angle: -5.0, ring: 17.8 },
+    position: { x: 1270.0, y: 52.0, group: 'computing_tier5', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 9e7, techs: ['computing_brain_interface'] },
     cost: { info: 50000 },
     bonus: { allRates: 1.3 },
@@ -1063,7 +1474,7 @@ const TECH_DEFINITIONS = {
     desc: 'Photon to electricity',
     branch: 'energy',
     tier: 0,
-    position: { angle: 115.0, ring: 1.0 },
+    position: { x: -150.0, y: 259.8, group: 'energy_tier1', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 1e6 },
     cost: { info: 500 },
     bonus: { energyRate: 1.05 },
@@ -1073,7 +1484,7 @@ const TECH_DEFINITIONS = {
     desc: 'Solar cell technology',
     branch: 'energy',
     tier: 0,
-    position: { angle: 115.0, ring: 5.8 },
+    position: { x: -90.0, y: 259.8, group: 'energy_tier1', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 1.2e6, techs: ['energy_solar_theory', 'materials_silicon'] },
     cost: { info: 700 },
     bonus: { energyRate: 1.04 },
@@ -1083,7 +1494,7 @@ const TECH_DEFINITIONS = {
     desc: 'Large-scale solar power',
     branch: 'energy',
     tier: 0,
-    position: { angle: 125.0, ring: 2.6 },
+    position: { x: -120.0, y: 311.8, group: 'energy_tier1', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 1.5e6, techs: ['energy_photovoltaics'] },
     cost: { info: 900 },
     bonus: { energyRate: 1.06 },
@@ -1094,7 +1505,7 @@ const TECH_DEFINITIONS = {
     desc: 'Kinetic to electrical',
     branch: 'energy',
     tier: 0,
-    position: { angle: 120.0, ring: 6.6 },
+    position: { x: -180.0, y: 311.8, group: 'energy_tier1', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 1.2e6 },
     cost: { info: 700 },
     bonus: { energyRate: 1.04 },
@@ -1104,7 +1515,7 @@ const TECH_DEFINITIONS = {
     desc: 'Large-scale wind power',
     branch: 'energy',
     tier: 0,
-    position: { angle: 115.0, ring: 3.4 },
+    position: { x: -210.0, y: 259.8, group: 'energy_tier1', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 1.5e6, techs: ['energy_wind', 'materials_aluminum'] },
     cost: { info: 900 },
     bonus: { energyRate: 1.06 },
@@ -1116,7 +1527,7 @@ const TECH_DEFINITIONS = {
     desc: 'Splitting atoms',
     branch: 'energy',
     tier: 0,
-    position: { angle: 120.0, ring: 4.2 },
+    position: { x: -275.0, y: 476.3, group: 'energy_tier2', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 3e6, techs: ['energy_solar_panels', 'energy_turbines'] },
     cost: { info: 2000 },
     bonus: { energyRate: 1.12 },
@@ -1126,7 +1537,7 @@ const TECH_DEFINITIONS = {
     desc: 'Fuel preparation',
     branch: 'energy',
     tier: 0,
-    position: { angle: 125.0, ring: 7.4 },
+    position: { x: -215.0, y: 476.3, group: 'energy_tier2', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 3.5e6, techs: ['energy_fission_theory'] },
     cost: { info: 2500 },
     bonus: { energyRate: 1.06 },
@@ -1136,7 +1547,7 @@ const TECH_DEFINITIONS = {
     desc: 'Controlled fission',
     branch: 'energy',
     tier: 0,
-    position: { angle: 115.0, ring: 8.2 },
+    position: { x: -245.0, y: 528.3, group: 'energy_tier2', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 3.5e6, techs: ['energy_fission_theory', 'materials_steel'] },
     cost: { info: 2500 },
     bonus: { energyRate: 1.06 },
@@ -1146,7 +1557,7 @@ const TECH_DEFINITIONS = {
     desc: 'Large-scale nuclear power',
     branch: 'energy',
     tier: 0,
-    position: { angle: 120.0, ring: 9.0 },
+    position: { x: -305.0, y: 528.3, group: 'energy_tier2', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 4e6, techs: ['energy_uranium_enrichment', 'energy_reactor_design'] },
     cost: { info: 3000 },
     bonus: { energyRate: 1.15 },
@@ -1158,7 +1569,7 @@ const TECH_DEFINITIONS = {
     desc: 'Combining atoms',
     branch: 'energy',
     tier: 0,
-    position: { angle: 120.0, ring: 18.6 },
+    position: { x: -335.0, y: 476.3, group: 'energy_tier2', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 8e6, techs: ['energy_fission_plants'] },
     cost: { info: 5000 },
     bonus: { energyRate: 1.2 },
@@ -1168,7 +1579,7 @@ const TECH_DEFINITIONS = {
     desc: 'Magnetic bottles',
     branch: 'energy',
     tier: 0,
-    position: { angle: 115.0, ring: 10.6 },
+    position: { x: -400.0, y: 692.8, group: 'energy_tier3', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 9e6, techs: ['energy_fusion_theory', 'computing_ai', 'materials_superalloys'] },
     cost: { info: 6000 },
     bonus: { energyRate: 1.1 },
@@ -1178,7 +1589,7 @@ const TECH_DEFINITIONS = {
     desc: 'Tokamak design',
     branch: 'energy',
     tier: 0,
-    position: { angle: 120.0, ring: 11.4 },
+    position: { x: -340.0, y: 692.8, group: 'energy_tier3', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 1e7, techs: ['energy_plasma_containment'] },
     cost: { info: 7000 },
     bonus: { energyRate: 1.08 },
@@ -1188,7 +1599,7 @@ const TECH_DEFINITIONS = {
     desc: 'Laser fusion',
     branch: 'energy',
     tier: 0,
-    position: { angle: 125.0, ring: 12.2 },
+    position: { x: -370.0, y: 744.8, group: 'energy_tier3', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 1e7, techs: ['energy_plasma_containment'] },
     cost: { info: 7000 },
     bonus: { energyRate: 1.08 },
@@ -1198,7 +1609,7 @@ const TECH_DEFINITIONS = {
     desc: 'Stellar power on Earth',
     branch: 'energy',
     tier: 0,
-    position: { angle: 115.0, ring: 13.0 },
+    position: { x: -430.0, y: 744.8, group: 'energy_tier3', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 1.2e7, techs: ['energy_magnetic_confinement', 'energy_inertial_confinement'] },
     cost: { info: 8000 },
     bonus: { energyRate: 1.25 },
@@ -1210,7 +1621,7 @@ const TECH_DEFINITIONS = {
     desc: 'Matter-antimatter annihilation',
     branch: 'energy',
     tier: 0,
-    position: { angle: 125.0, ring: 9.8 },
+    position: { x: -460.0, y: 692.8, group: 'energy_tier3', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 3e7, techs: ['energy_fusion_reactors'] },
     cost: { info: 15000 },
     bonus: { energyRate: 1.3 },
@@ -1220,7 +1631,7 @@ const TECH_DEFINITIONS = {
     desc: 'Particle accelerators',
     branch: 'energy',
     tier: 0,
-    position: { angle: 120.0, ring: 13.8 },
+    position: { x: -525.0, y: 909.3, group: 'energy_tier4', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 3.5e7, techs: ['energy_antimatter_theory'] },
     cost: { info: 18000 },
     bonus: { energyRate: 1.12 },
@@ -1230,7 +1641,7 @@ const TECH_DEFINITIONS = {
     desc: 'Magnetic traps',
     branch: 'energy',
     tier: 0,
-    position: { angle: 125.0, ring: 14.6 },
+    position: { x: -465.0, y: 909.3, group: 'energy_tier4', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 3.5e7, techs: ['energy_antimatter_production', 'materials_metamaterials'] },
     cost: { info: 18000 },
     bonus: { energyRate: 1.12 },
@@ -1240,7 +1651,7 @@ const TECH_DEFINITIONS = {
     desc: 'Ultimate energy density',
     branch: 'energy',
     tier: 0,
-    position: { angle: 115.0, ring: 15.4 },
+    position: { x: -495.0, y: 961.3, group: 'energy_tier4', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 4e7, techs: ['energy_antimatter_storage'] },
     cost: { info: 20000 },
     bonus: { energyRate: 1.4 },
@@ -1252,7 +1663,7 @@ const TECH_DEFINITIONS = {
     desc: 'Vacuum energy extraction',
     branch: 'energy',
     tier: 0,
-    position: { angle: 120.0, ring: 16.2 },
+    position: { x: -555.0, y: 961.3, group: 'energy_tier4', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 8e7, techs: ['energy_antimatter_reactors'] },
     cost: { info: 40000 },
     bonus: { energyRate: 2.0 },
@@ -1262,7 +1673,7 @@ const TECH_DEFINITIONS = {
     desc: 'Quantum foam energy',
     branch: 'energy',
     tier: 0,
-    position: { angle: 125.0, ring: 17.0 },
+    position: { x: -650.0, y: 1125.8, group: 'energy_tier5', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 9e7, techs: ['energy_zero_point', 'computing_quantum'] },
     cost: { info: 50000 },
     bonus: { energyRate: 1.25 },
@@ -1272,7 +1683,7 @@ const TECH_DEFINITIONS = {
     desc: 'Plate-based vacuum energy',
     branch: 'energy',
     tier: 0,
-    position: { angle: 115.0, ring: 17.8 },
+    position: { x: -590.0, y: 1125.8, group: 'energy_tier5', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 9e7, techs: ['energy_vacuum_fluctuations'] },
     cost: { info: 50000 },
     bonus: { energyRate: 1.25 },
@@ -1286,7 +1697,7 @@ const TECH_DEFINITIONS = {
     desc: 'Understanding life',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 55.0, ring: 1.0 },
+    position: { x: 150.0, y: 259.8, group: 'biotech_tier1', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 1e6 },
     cost: { info: 500 },
     bonus: { energyRate: 1.05 },
@@ -1296,7 +1707,7 @@ const TECH_DEFINITIONS = {
     desc: 'Double helix',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 55.0, ring: 3.4 },
+    position: { x: 210.0, y: 259.8, group: 'biotech_tier1', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 1.2e6, techs: ['biotech_cell_theory'] },
     cost: { info: 700 },
     bonus: { infoRate: 1.04 },
@@ -1306,7 +1717,7 @@ const TECH_DEFINITIONS = {
     desc: 'Ribosomes & translation',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 60.0, ring: 4.2 },
+    position: { x: 180.0, y: 311.8, group: 'biotech_tier1', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 1.2e6, techs: ['biotech_cell_theory'] },
     cost: { info: 700 },
     bonus: { energyRate: 1.04 },
@@ -1317,7 +1728,7 @@ const TECH_DEFINITIONS = {
     desc: 'Heredity & variation',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 60.0, ring: 1.8 },
+    position: { x: 120.0, y: 311.8, group: 'biotech_tier1', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 1.5e6, techs: ['biotech_dna_structure'] },
     cost: { info: 900 },
     bonus: { infoRate: 1.06 },
@@ -1327,7 +1738,7 @@ const TECH_DEFINITIONS = {
     desc: 'Reading DNA',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 60.0, ring: 9.0 },
+    position: { x: 90.0, y: 259.8, group: 'biotech_tier1', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 1.8e6, techs: ['biotech_genetics', 'computing_processors'] },
     cost: { info: 1100 },
     bonus: { infoRate: 1.05 },
@@ -1337,7 +1748,7 @@ const TECH_DEFINITIONS = {
     desc: 'Identifying genes',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 65.0, ring: 9.8 },
+    position: { x: 275.0, y: 476.3, group: 'biotech_tier2', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 1.8e6, techs: ['biotech_gene_sequencing'] },
     cost: { info: 1100 },
     bonus: { infoRate: 1.05 },
@@ -1349,7 +1760,7 @@ const TECH_DEFINITIONS = {
     desc: 'Modifying DNA',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 65.0, ring: 2.6 },
+    position: { x: 335.0, y: 476.3, group: 'biotech_tier2', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 3e6, techs: ['biotech_genetic_markers'] },
     cost: { info: 2000 },
     bonus: { energyRate: 1.1 },
@@ -1359,7 +1770,7 @@ const TECH_DEFINITIONS = {
     desc: 'Precise gene editing',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 65.0, ring: 5.0 },
+    position: { x: 305.0, y: 528.3, group: 'biotech_tier2', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 3.5e6, techs: ['biotech_gene_editing'] },
     cost: { info: 2500 },
     bonus: { energyRate: 1.06 },
@@ -1369,7 +1780,7 @@ const TECH_DEFINITIONS = {
     desc: 'Medical applications',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 55.0, ring: 5.8 },
+    position: { x: 245.0, y: 528.3, group: 'biotech_tier2', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 3.5e6, techs: ['biotech_crispr'] },
     cost: { info: 2500 },
     bonus: { energyRate: 1.06 },
@@ -1380,7 +1791,7 @@ const TECH_DEFINITIONS = {
     desc: 'Pluripotent cells',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 60.0, ring: 6.6 },
+    position: { x: 215.0, y: 476.3, group: 'biotech_tier2', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 4e6, techs: ['biotech_gene_editing'] },
     cost: { info: 3000 },
     bonus: { energyRate: 1.08 },
@@ -1390,7 +1801,7 @@ const TECH_DEFINITIONS = {
     desc: 'Reprogrammed cells',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 65.0, ring: 7.4 },
+    position: { x: 400.0, y: 692.8, group: 'biotech_tier3', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 4.5e6, techs: ['biotech_stem_cells'] },
     cost: { info: 3500 },
     bonus: { energyRate: 1.05 },
@@ -1400,7 +1811,7 @@ const TECH_DEFINITIONS = {
     desc: 'Growing organs',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 55.0, ring: 8.2 },
+    position: { x: 460.0, y: 692.8, group: 'biotech_tier3', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 4.5e6, techs: ['biotech_pluripotent'] },
     cost: { info: 3500 },
     bonus: { energyRate: 1.05 },
@@ -1412,7 +1823,7 @@ const TECH_DEFINITIONS = {
     desc: 'Designing life',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 60.0, ring: 18.6 },
+    position: { x: 430.0, y: 744.8, group: 'biotech_tier3', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 8e6, techs: ['biotech_regeneration', 'biotech_gene_therapy'] },
     cost: { info: 5000 },
     bonus: { energyRate: 1.15 },
@@ -1422,7 +1833,7 @@ const TECH_DEFINITIONS = {
     desc: 'Artificial genomes',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 60.0, ring: 11.4 },
+    position: { x: 370.0, y: 744.8, group: 'biotech_tier3', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 9e6, techs: ['biotech_synthetic'] },
     cost: { info: 6000 },
     bonus: { infoRate: 1.08 },
@@ -1432,7 +1843,7 @@ const TECH_DEFINITIONS = {
     desc: 'Custom life forms',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 65.0, ring: 12.2 },
+    position: { x: 340.0, y: 692.8, group: 'biotech_tier3', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 9e6, techs: ['biotech_synthetic_dna'] },
     cost: { info: 6000 },
     bonus: { energyRate: 1.08 },
@@ -1442,7 +1853,7 @@ const TECH_DEFINITIONS = {
     desc: 'Engineered energy',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 55.0, ring: 13.0 },
+    position: { x: 525.0, y: 909.3, group: 'biotech_tier4', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 1e7, techs: ['biotech_synthetic_organisms'] },
     cost: { info: 7000 },
     bonus: { energyRate: 1.1 },
@@ -1454,7 +1865,7 @@ const TECH_DEFINITIONS = {
     desc: 'Living computers',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 55.0, ring: 10.6 },
+    position: { x: 585.0, y: 909.3, group: 'biotech_tier4', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 3e7, techs: ['biotech_biofuels'] },
     cost: { info: 15000 },
     bonus: { infoRate: 1.2 },
@@ -1464,7 +1875,7 @@ const TECH_DEFINITIONS = {
     desc: 'Genetic algorithms',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 60.0, ring: 13.8 },
+    position: { x: 555.0, y: 961.3, group: 'biotech_tier4', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 3.5e7, techs: ['biotech_biocomputing', 'computing_ai'] },
     cost: { info: 18000 },
     bonus: { infoRate: 1.12 },
@@ -1474,7 +1885,7 @@ const TECH_DEFINITIONS = {
     desc: 'Growing brains',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 65.0, ring: 14.6 },
+    position: { x: 495.0, y: 961.3, group: 'biotech_tier4', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 3.5e7, techs: ['biotech_biocomputing'] },
     cost: { info: 18000 },
     bonus: { infoRate: 1.12 },
@@ -1484,7 +1895,7 @@ const TECH_DEFINITIONS = {
     desc: 'Biological CPUs',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 55.0, ring: 15.4 },
+    position: { x: 465.0, y: 909.3, group: 'biotech_tier4', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 4e7, techs: ['biotech_dna_computing', 'biotech_neural_tissue'] },
     cost: { info: 20000 },
     bonus: { allRates: 1.15 },
@@ -1496,7 +1907,7 @@ const TECH_DEFINITIONS = {
     desc: 'Defeating aging',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 60.0, ring: 16.2 },
+    position: { x: 650.0, y: 1125.8, group: 'biotech_tier5', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 8e7, techs: ['biotech_living_processors'] },
     cost: { info: 40000 },
     bonus: { energyRate: 1.5 },
@@ -1506,7 +1917,7 @@ const TECH_DEFINITIONS = {
     desc: 'Cellular immortality',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 65.0, ring: 17.0 },
+    position: { x: 710.0, y: 1125.8, group: 'biotech_tier5', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 9e7, techs: ['biotech_immortality'] },
     cost: { info: 50000 },
     bonus: { energyRate: 1.15 },
@@ -1516,7 +1927,7 @@ const TECH_DEFINITIONS = {
     desc: 'Nanoscale healing',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 55.0, ring: 17.8 },
+    position: { x: 680.0, y: 1177.8, group: 'biotech_tier5', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 9e7, techs: ['biotech_telomeres', 'materials_programmable'] },
     cost: { info: 50000 },
     bonus: { energyRate: 1.15 },
@@ -1526,7 +1937,7 @@ const TECH_DEFINITIONS = {
     desc: 'Clone & transfer',
     branch: 'biotech',
     tier: 0,
-    position: { angle: 65.0, ring: 19.4 },
+    position: { x: 620.0, y: 1177.8, group: 'biotech_tier5', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 9.5e7, techs: ['biotech_cellular_repair'] },
     cost: { info: 60000 },
     bonus: { allRates: 1.2 },
@@ -1541,7 +1952,7 @@ const TECH_DEFINITIONS = {
     desc: 'Newton\'s third law',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 235.0, ring: 1.0 },
+    position: { x: -150.0, y: -259.8, group: 'propulsion_tier1', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 1e6 },
     cost: { info: 500 },
     bonus: { allRates: 1.03 },
@@ -1551,7 +1962,7 @@ const TECH_DEFINITIONS = {
     desc: 'Simple propellant',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 235.0, ring: 3.4 },
+    position: { x: -90.0, y: -259.8, group: 'propulsion_tier1', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 1.2e6, techs: ['propulsion_rocketry', 'materials_aluminum'] },
     cost: { info: 700 },
     bonus: { allRates: 1.02 },
@@ -1561,7 +1972,7 @@ const TECH_DEFINITIONS = {
     desc: 'Controllable thrust',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 240.0, ring: 4.2 },
+    position: { x: -120.0, y: -207.8, group: 'propulsion_tier1', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 1.2e6, techs: ['propulsion_rocketry', 'materials_steel'] },
     cost: { info: 700 },
     bonus: { allRates: 1.02 },
@@ -1571,7 +1982,7 @@ const TECH_DEFINITIONS = {
     desc: 'Combined systems',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 240.0, ring: 1.8 },
+    position: { x: -180.0, y: -207.8, group: 'propulsion_tier1', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 1.5e6, techs: ['propulsion_solid_fuel', 'propulsion_liquid_fuel'] },
     cost: { info: 900 },
     bonus: { allRates: 1.04 },
@@ -1583,7 +1994,7 @@ const TECH_DEFINITIONS = {
     desc: 'Ion acceleration',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 245.0, ring: 2.6 },
+    position: { x: -275.0, y: -476.3, group: 'propulsion_tier2', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 3e6, techs: ['propulsion_hybrid'] },
     cost: { info: 2000 },
     bonus: { allRates: 1.06 },
@@ -1593,7 +2004,7 @@ const TECH_DEFINITIONS = {
     desc: 'Xenon propulsion',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 245.0, ring: 5.0 },
+    position: { x: -215.0, y: -476.3, group: 'propulsion_tier2', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 3.5e6, techs: ['propulsion_electric', 'energy_solar_panels'] },
     cost: { info: 2500 },
     bonus: { allRates: 1.04 },
@@ -1603,7 +2014,7 @@ const TECH_DEFINITIONS = {
     desc: 'Magnetic acceleration',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 235.0, ring: 5.8 },
+    position: { x: -245.0, y: -424.3, group: 'propulsion_tier2', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 3.5e6, techs: ['propulsion_ion_drives'] },
     cost: { info: 2500 },
     bonus: { allRates: 1.04 },
@@ -1613,7 +2024,7 @@ const TECH_DEFINITIONS = {
     desc: 'Variable specific impulse',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 240.0, ring: 6.6 },
+    position: { x: -305.0, y: -424.3, group: 'propulsion_tier2', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 4e6, techs: ['propulsion_hall_effect'] },
     cost: { info: 3000 },
     bonus: { allRates: 1.05 },
@@ -1625,7 +2036,7 @@ const TECH_DEFINITIONS = {
     desc: 'Atomic rockets',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 240.0, ring: 13.8 },
+    position: { x: -400.0, y: -692.8, group: 'propulsion_tier3', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 8e6, techs: ['propulsion_vasimr'] },
     cost: { info: 5000 },
     bonus: { allRates: 1.1 },
@@ -1635,7 +2046,7 @@ const TECH_DEFINITIONS = {
     desc: 'Heated propellant',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 235.0, ring: 8.2 },
+    position: { x: -340.0, y: -692.8, group: 'propulsion_tier3', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 9e6, techs: ['propulsion_nuclear', 'energy_fission_plants'] },
     cost: { info: 6000 },
     bonus: { allRates: 1.06 },
@@ -1645,7 +2056,7 @@ const TECH_DEFINITIONS = {
     desc: 'Reactor-powered ion drives',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 240.0, ring: 9.0 },
+    position: { x: -370.0, y: -640.8, group: 'propulsion_tier3', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 9e6, techs: ['propulsion_nuclear_thermal'] },
     cost: { info: 6000 },
     bonus: { allRates: 1.06 },
@@ -1657,7 +2068,7 @@ const TECH_DEFINITIONS = {
     desc: 'Stellar-powered spacecraft',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 245.0, ring: 7.4 },
+    position: { x: -525.0, y: -909.3, group: 'propulsion_tier4', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 3e7, techs: ['propulsion_nuclear_electric'] },
     cost: { info: 15000 },
     bonus: { allRates: 1.15 },
@@ -1667,7 +2078,7 @@ const TECH_DEFINITIONS = {
     desc: 'Direct fusion thrust',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 245.0, ring: 9.8 },
+    position: { x: -465.0, y: -909.3, group: 'propulsion_tier4', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 3.5e7, techs: ['propulsion_fusion', 'energy_fusion_reactors'] },
     cost: { info: 18000 },
     bonus: { allRates: 1.08 },
@@ -1677,7 +2088,7 @@ const TECH_DEFINITIONS = {
     desc: 'Antimatter ignition',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 235.0, ring: 10.6 },
+    position: { x: -495.0, y: -857.3, group: 'propulsion_tier4', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 3.5e7, techs: ['propulsion_fusion_drives', 'energy_antimatter_production'] },
     cost: { info: 18000 },
     bonus: { allRates: 1.08 },
@@ -1689,7 +2100,7 @@ const TECH_DEFINITIONS = {
     desc: 'Faster than light',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 240.0, ring: 11.4 },
+    position: { x: -650.0, y: -1125.8, group: 'propulsion_tier5', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 8e7, techs: ['propulsion_antimatter_catalyzed'] },
     cost: { info: 40000 },
     bonus: { allRates: 1.3 },
@@ -1699,7 +2110,7 @@ const TECH_DEFINITIONS = {
     desc: 'Warp bubble',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 245.0, ring: 12.2 },
+    position: { x: -590.0, y: -1125.8, group: 'propulsion_tier5', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 9e7, techs: ['propulsion_ftl', 'materials_exotic', 'energy_zero_point'] },
     cost: { info: 50000 },
     bonus: { allRates: 1.15 },
@@ -1709,7 +2120,7 @@ const TECH_DEFINITIONS = {
     desc: 'Spacetime manipulation',
     branch: 'propulsion',
     tier: 0,
-    position: { angle: 235.0, ring: 13.0 },
+    position: { x: -620.0, y: -1073.8, group: 'propulsion_tier5', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 9e7, techs: ['propulsion_alcubierre'] },
     cost: { info: 50000 },
     bonus: { allRates: 1.15 },
@@ -1723,7 +2134,7 @@ const TECH_DEFINITIONS = {
     desc: 'Light detection',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 295.0, ring: 1.0 },
+    position: { x: 150.0, y: -259.8, group: 'sensors_tier1', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 1e6 },
     cost: { info: 500 },
     bonus: { infoRate: 1.03 },
@@ -1733,7 +2144,7 @@ const TECH_DEFINITIONS = {
     desc: 'Image capture',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 295.0, ring: 3.4 },
+    position: { x: 210.0, y: -259.8, group: 'sensors_tier1', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 1.2e6, techs: ['sensors_optical', 'computing_processors'] },
     cost: { info: 700 },
     bonus: { infoRate: 1.02 },
@@ -1743,7 +2154,7 @@ const TECH_DEFINITIONS = {
     desc: 'Distant observation',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 300.0, ring: 4.2 },
+    position: { x: 180.0, y: -207.8, group: 'sensors_tier1', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 1.2e6, techs: ['sensors_optical'] },
     cost: { info: 700 },
     bonus: { infoRate: 1.02 },
@@ -1754,7 +2165,7 @@ const TECH_DEFINITIONS = {
     desc: 'Radio waves',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 300.0, ring: 1.8 },
+    position: { x: 120.0, y: -207.8, group: 'sensors_tier1', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 1.5e6 },
     cost: { info: 900 },
     bonus: { infoRate: 1.04 },
@@ -1764,7 +2175,7 @@ const TECH_DEFINITIONS = {
     desc: 'Long-range communication',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 300.0, ring: 9.0 },
+    position: { x: 90.0, y: -259.8, group: 'sensors_tier1', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 1.8e6, techs: ['sensors_electromagnetic'] },
     cost: { info: 1100 },
     bonus: { infoRate: 1.03 },
@@ -1774,7 +2185,7 @@ const TECH_DEFINITIONS = {
     desc: 'Active detection',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 305.0, ring: 9.8 },
+    position: { x: 275.0, y: -476.3, group: 'sensors_tier2', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 1.8e6, techs: ['sensors_radio'] },
     cost: { info: 1100 },
     bonus: { infoRate: 1.03 },
@@ -1786,7 +2197,7 @@ const TECH_DEFINITIONS = {
     desc: 'Light analysis',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 305.0, ring: 2.6 },
+    position: { x: 335.0, y: -476.3, group: 'sensors_tier2', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 3e6, techs: ['sensors_telescopes'] },
     cost: { info: 2000 },
     bonus: { infoRate: 1.06 },
@@ -1796,7 +2207,7 @@ const TECH_DEFINITIONS = {
     desc: 'Molecular identification',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 305.0, ring: 5.0 },
+    position: { x: 305.0, y: -424.3, group: 'sensors_tier2', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 3.5e6, techs: ['sensors_spectroscopy'] },
     cost: { info: 2500 },
     bonus: { infoRate: 1.04 },
@@ -1806,7 +2217,7 @@ const TECH_DEFINITIONS = {
     desc: 'Heat signatures',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 295.0, ring: 5.8 },
+    position: { x: 245.0, y: -424.3, group: 'sensors_tier2', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 3.5e6, techs: ['sensors_spectroscopy'] },
     cost: { info: 2500 },
     bonus: { infoRate: 1.04 },
@@ -1817,7 +2228,7 @@ const TECH_DEFINITIONS = {
     desc: 'Subatomic sensors',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 300.0, ring: 6.6 },
+    position: { x: 215.0, y: -476.3, group: 'sensors_tier2', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 4e6, techs: ['sensors_radar'] },
     cost: { info: 3000 },
     bonus: { infoRate: 1.05 },
@@ -1827,7 +2238,7 @@ const TECH_DEFINITIONS = {
     desc: 'Light-emitting particles',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 305.0, ring: 7.4 },
+    position: { x: 400.0, y: -692.8, group: 'sensors_tier3', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 4.5e6, techs: ['sensors_particle'] },
     cost: { info: 3500 },
     bonus: { infoRate: 1.03 },
@@ -1837,7 +2248,7 @@ const TECH_DEFINITIONS = {
     desc: 'Particle tracks',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 295.0, ring: 8.2 },
+    position: { x: 460.0, y: -692.8, group: 'sensors_tier3', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 4.5e6, techs: ['sensors_scintillators'] },
     cost: { info: 3500 },
     bonus: { infoRate: 1.03 },
@@ -1849,7 +2260,7 @@ const TECH_DEFINITIONS = {
     desc: 'Quantum state detection',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 295.0, ring: 17.8 },
+    position: { x: 430.0, y: -640.8, group: 'sensors_tier3', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 8e6, techs: ['sensors_cloud_chambers'] },
     cost: { info: 5000 },
     bonus: { infoRate: 1.12 },
@@ -1859,7 +2270,7 @@ const TECH_DEFINITIONS = {
     desc: 'Spooky action detection',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 300.0, ring: 11.4 },
+    position: { x: 370.0, y: -640.8, group: 'sensors_tier3', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 9e6, techs: ['sensors_quantum', 'computing_quantum'] },
     cost: { info: 6000 },
     bonus: { infoRate: 1.06 },
@@ -1869,7 +2280,7 @@ const TECH_DEFINITIONS = {
     desc: 'Precise timekeeping',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 305.0, ring: 12.2 },
+    position: { x: 525.0, y: -909.3, group: 'sensors_tier4', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 9e6, techs: ['sensors_quantum'] },
     cost: { info: 6000 },
     bonus: { infoRate: 1.06 },
@@ -1879,7 +2290,7 @@ const TECH_DEFINITIONS = {
     desc: 'Superconducting sensors',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 295.0, ring: 13.0 },
+    position: { x: 585.0, y: -909.3, group: 'sensors_tier4', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 1e7, techs: ['sensors_quantum_entanglement', 'sensors_atomic_clocks'] },
     cost: { info: 7000 },
     bonus: { infoRate: 1.08 },
@@ -1891,7 +2302,7 @@ const TECH_DEFINITIONS = {
     desc: 'Spacetime curvature',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 295.0, ring: 10.6 },
+    position: { x: 555.0, y: -857.3, group: 'sensors_tier4', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 3e7, techs: ['sensors_squid'] },
     cost: { info: 15000 },
     bonus: { infoRate: 1.15 },
@@ -1901,7 +2312,7 @@ const TECH_DEFINITIONS = {
     desc: 'LIGO-style detection',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 300.0, ring: 13.8 },
+    position: { x: 495.0, y: -857.3, group: 'sensors_tier4', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 3.5e7, techs: ['sensors_gravity', 'computing_ai'] },
     cost: { info: 18000 },
     bonus: { infoRate: 1.08 },
@@ -1911,7 +2322,7 @@ const TECH_DEFINITIONS = {
     desc: 'Ripples in spacetime',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 305.0, ring: 14.6 },
+    position: { x: 650.0, y: -1125.8, group: 'sensors_tier5', orbit: 0, orbitIndex: 0 },
     requirements: { reach: 3.5e7, techs: ['sensors_ligo'] },
     cost: { info: 18000 },
     bonus: { infoRate: 1.08 },
@@ -1923,7 +2334,7 @@ const TECH_DEFINITIONS = {
     desc: 'Invisible universe',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 295.0, ring: 15.4 },
+    position: { x: 710.0, y: -1125.8, group: 'sensors_tier5', orbit: 1, orbitIndex: 0 },
     requirements: { reach: 8e7, techs: ['sensors_gravitational_waves'] },
     cost: { info: 40000 },
     bonus: { infoRate: 1.3 },
@@ -1933,7 +2344,7 @@ const TECH_DEFINITIONS = {
     desc: 'Weakly interacting particles',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 300.0, ring: 16.2 },
+    position: { x: 680.0, y: -1073.8, group: 'sensors_tier5', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 9e7, techs: ['sensors_dark_matter', 'energy_zero_point'] },
     cost: { info: 50000 },
     bonus: { infoRate: 1.12 },
@@ -1943,7 +2354,7 @@ const TECH_DEFINITIONS = {
     desc: 'Hypothetical particles',
     branch: 'sensors',
     tier: 0,
-    position: { angle: 305.0, ring: 17.0 },
+    position: { x: 620.0, y: -1073.8, group: 'sensors_tier5', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 9e7, techs: ['sensors_wimp'] },
     cost: { info: 50000 },
     bonus: { infoRate: 1.12 },
@@ -1975,7 +2386,7 @@ const TECH_DEFINITIONS = {
     desc: '+100% Dyson component efficiency',
     branch: 'energy',
     tier: 1,
-    position: { angle: 120.0, ring: 1.8 },
+    position: { x: -620.0, y: 1177.8, group: 'energy_tier5', orbit: 1, orbitIndex: 1 },
     requirements: { reach: 1e18, techs: ['planetaryUnification'] },
     cost: { info: 1e6 },
     bonus: { dysonBonus: 2.0 },
@@ -1985,7 +2396,7 @@ const TECH_DEFINITIONS = {
     desc: '+200% energy generation',
     branch: 'energy',
     tier: 1,
-    position: { angle: 125.0, ring: 5.0 },
+    position: { x: -680.0, y: 1177.8, group: 'energy_tier5', orbit: 1, orbitIndex: 2 },
     requirements: { reach: 5e18, techs: ['dysonEngineering'] },
     cost: { info: 5e6 },
     bonus: { energyRate: 3.0 },
@@ -1995,7 +2406,7 @@ const TECH_DEFINITIONS = {
     desc: 'Unlock exotic matter resource',
     branch: 'materials',
     tier: 1,
-    position: { angle: 180.0, ring: 4.2 },
+    position: { x: -1360.0, y: 0.0, group: 'materials_tier5', orbit: 1, orbitIndex: 3 },
     requirements: { reach: 1e19, techs: ['stellarHarvesting'] },
     cost: { info: 1e7 },
     bonus: { unlockExotic: true },
@@ -3172,13 +3583,13 @@ function hideTechTooltip() {
 }
 
 function updateTechTree() {
-  const group = techTreeState.group;
-  if (!group) return;
+  const svgGroup = techTreeState.group;
+  if (!svgGroup) return;
   
   const currentTier = parseInt(document.getElementById('tech-tier-select')?.value || '0');
   
   // Clear existing content
-  group.innerHTML = '';
+  svgGroup.innerHTML = '';
   
   // Branch colors
   const branchColors = {
@@ -3191,15 +3602,31 @@ function updateTechTree() {
     core: '#fff',
   };
   
-  // Draw connection lines first
+  // Draw group backgrounds first
+  Object.keys(TECH_GROUPS).forEach(groupKey => {
+    const groupDef = TECH_GROUPS[groupKey];
+    const branchColor = branchColors[groupDef.branch] || '#0af';
+    
+    // Draw cluster background circle
+    const bgCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    bgCircle.setAttribute('cx', groupDef.x);
+    bgCircle.setAttribute('cy', groupDef.y);
+    bgCircle.setAttribute('r', '200');
+    bgCircle.setAttribute('fill', branchColor);
+    bgCircle.setAttribute('opacity', '0.05');
+    bgCircle.setAttribute('stroke', branchColor);
+    bgCircle.setAttribute('stroke-width', '1');
+    bgCircle.setAttribute('stroke-opacity', '0.2');
+    svgGroup.appendChild(bgCircle);
+  });
+  
+  // Draw connection lines
   Object.keys(TECH_DEFINITIONS).forEach(key => {
     const def = TECH_DEFINITIONS[key];
     if (def.tier !== currentTier) return;
     
-    const angle = (def.position.angle * Math.PI) / 180;
-    const radius = def.position.ring * 200;
-    const x = Math.cos(angle) * radius;
-    const y = Math.sin(angle) * radius;
+    const x = def.position.x;
+    const y = def.position.y;
     
     const branchColor = branchColors[def.branch] || '#0af';
     
@@ -3208,10 +3635,8 @@ function updateTechTree() {
       def.requirements.techs.forEach(prereqKey => {
         const prereqDef = TECH_DEFINITIONS[prereqKey];
         if (prereqDef && prereqDef.tier === currentTier) {
-          const prereqAngle = (prereqDef.position.angle * Math.PI) / 180;
-          const prereqRadius = prereqDef.position.ring * 200;
-          const prereqX = Math.cos(prereqAngle) * prereqRadius;
-          const prereqY = Math.sin(prereqAngle) * prereqRadius;
+          const prereqX = prereqDef.position.x;
+          const prereqY = prereqDef.position.y;
           
           const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
           line.setAttribute('x1', prereqX);
@@ -3220,13 +3645,13 @@ function updateTechTree() {
           line.setAttribute('y2', y);
           line.setAttribute('stroke', game.techs[key].researched ? branchColor : 'rgba(100, 100, 120, 0.3)');
           line.setAttribute('stroke-width', '2');
-          group.appendChild(line);
+          svgGroup.appendChild(line);
         }
       });
     }
     
-    // Draw line to center for ring 1 nodes
-    if (def.position.ring === 1) {
+    // Draw line to center for orbit 0 nodes in tier 1 groups
+    if (def.position.orbit === 0 && def.position.group.includes('tier1')) {
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       line.setAttribute('x1', '0');
       line.setAttribute('y1', '0');
@@ -3234,7 +3659,7 @@ function updateTechTree() {
       line.setAttribute('y2', y);
       line.setAttribute('stroke', game.techs[key].researched ? branchColor : 'rgba(100, 100, 120, 0.3)');
       line.setAttribute('stroke-width', '2');
-      group.appendChild(line);
+      svgGroup.appendChild(line);
     }
   });
   
@@ -3247,7 +3672,7 @@ function updateTechTree() {
   centerCircle.setAttribute('fill', '#0af');
   centerCircle.setAttribute('stroke', '#0ff');
   centerCircle.setAttribute('stroke-width', '3');
-  group.appendChild(centerCircle);
+  svgGroup.appendChild(centerCircle);
   
   const centerText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
   centerText.setAttribute('x', '0');
@@ -3259,7 +3684,7 @@ function updateTechTree() {
   centerText.setAttribute('font-size', '14');
   centerText.setAttribute('font-weight', 'bold');
   centerText.textContent = centerLabel;
-  group.appendChild(centerText);
+  svgGroup.appendChild(centerText);
   
   // Draw tech nodes
   Object.keys(TECH_DEFINITIONS).forEach(key => {
@@ -3267,10 +3692,8 @@ function updateTechTree() {
     const tech = game.techs[key];
     if (def.tier !== currentTier) return;
     
-    const angle = (def.position.angle * Math.PI) / 180;
-    const radius = def.position.ring * 200;
-    const x = Math.cos(angle) * radius;
-    const y = Math.sin(angle) * radius;
+    const x = def.position.x;
+    const y = def.position.y;
     
     const branchColor = branchColors[def.branch] || '#0af';
     
@@ -3351,7 +3774,7 @@ function updateTechTree() {
     nameText.textContent = def.name;
     nodeGroup.appendChild(nameText);
     
-    group.appendChild(nodeGroup);
+    svgGroup.appendChild(nodeGroup);
   });
 }
 

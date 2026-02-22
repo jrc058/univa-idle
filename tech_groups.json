@@ -1,0 +1,407 @@
+{
+  "biotech_tier1": {
+    "id": 0,
+    "branch": "biotech",
+    "tier": 1,
+    "x": 150.0,
+    "y": 259.8,
+    "nodes": [
+      "biotech_cell_theory",
+      "biotech_dna_structure",
+      "biotech_protein_synthesis",
+      "biotech_genetics",
+      "biotech_gene_sequencing"
+    ]
+  },
+  "biotech_tier2": {
+    "id": 1,
+    "branch": "biotech",
+    "tier": 2,
+    "x": 275.0,
+    "y": 476.3,
+    "nodes": [
+      "biotech_genetic_markers",
+      "biotech_gene_editing",
+      "biotech_crispr",
+      "biotech_gene_therapy",
+      "biotech_stem_cells"
+    ]
+  },
+  "biotech_tier3": {
+    "id": 2,
+    "branch": "biotech",
+    "tier": 3,
+    "x": 400.0,
+    "y": 692.8,
+    "nodes": [
+      "biotech_pluripotent",
+      "biotech_regeneration",
+      "biotech_synthetic",
+      "biotech_synthetic_dna",
+      "biotech_synthetic_organisms"
+    ]
+  },
+  "biotech_tier4": {
+    "id": 3,
+    "branch": "biotech",
+    "tier": 4,
+    "x": 525.0,
+    "y": 909.3,
+    "nodes": [
+      "biotech_biofuels",
+      "biotech_biocomputing",
+      "biotech_dna_computing",
+      "biotech_neural_tissue",
+      "biotech_living_processors"
+    ]
+  },
+  "biotech_tier5": {
+    "id": 4,
+    "branch": "biotech",
+    "tier": 5,
+    "x": 650.0,
+    "y": 1125.8,
+    "nodes": [
+      "biotech_immortality",
+      "biotech_telomeres",
+      "biotech_cellular_repair",
+      "biotech_consciousness_transfer"
+    ]
+  },
+  "computing_tier1": {
+    "id": 5,
+    "branch": "computing",
+    "tier": 1,
+    "x": 300.0,
+    "y": 0.0,
+    "nodes": [
+      "computing_logic",
+      "computing_transistors",
+      "computing_integrated_circuits",
+      "computing_architecture",
+      "computing_processors"
+    ]
+  },
+  "computing_tier2": {
+    "id": 6,
+    "branch": "computing",
+    "tier": 2,
+    "x": 550.0,
+    "y": 0.0,
+    "nodes": [
+      "computing_memory",
+      "computing_parallel",
+      "computing_multicore",
+      "computing_gpu",
+      "computing_storage"
+    ]
+  },
+  "computing_tier3": {
+    "id": 7,
+    "branch": "computing",
+    "tier": 3,
+    "x": 800.0,
+    "y": 0.0,
+    "nodes": [
+      "computing_ssd",
+      "computing_optical",
+      "computing_ai",
+      "computing_machine_learning",
+      "computing_neural_nets"
+    ]
+  },
+  "computing_tier4": {
+    "id": 8,
+    "branch": "computing",
+    "tier": 4,
+    "x": 1050.0,
+    "y": 0.0,
+    "nodes": [
+      "computing_deep_learning",
+      "computing_quantum",
+      "computing_qubits",
+      "computing_quantum_gates"
+    ]
+  },
+  "computing_tier5": {
+    "id": 9,
+    "branch": "computing",
+    "tier": 5,
+    "x": 1300.0,
+    "y": 0.0,
+    "nodes": [
+      "computing_quantum_error",
+      "computing_consciousness",
+      "computing_brain_interface",
+      "computing_mind_upload"
+    ]
+  },
+  "energy_tier1": {
+    "id": 10,
+    "branch": "energy",
+    "tier": 1,
+    "x": -150.0,
+    "y": 259.8,
+    "nodes": [
+      "energy_solar_theory",
+      "energy_photovoltaics",
+      "energy_solar_panels",
+      "energy_wind",
+      "energy_turbines"
+    ]
+  },
+  "energy_tier2": {
+    "id": 11,
+    "branch": "energy",
+    "tier": 2,
+    "x": -275.0,
+    "y": 476.3,
+    "nodes": [
+      "energy_fission_theory",
+      "energy_uranium_enrichment",
+      "energy_reactor_design",
+      "energy_fission_plants",
+      "energy_fusion_theory"
+    ]
+  },
+  "energy_tier3": {
+    "id": 12,
+    "branch": "energy",
+    "tier": 3,
+    "x": -400.0,
+    "y": 692.8,
+    "nodes": [
+      "energy_plasma_containment",
+      "energy_magnetic_confinement",
+      "energy_inertial_confinement",
+      "energy_fusion_reactors",
+      "energy_antimatter_theory"
+    ]
+  },
+  "energy_tier4": {
+    "id": 13,
+    "branch": "energy",
+    "tier": 4,
+    "x": -525.0,
+    "y": 909.3,
+    "nodes": [
+      "energy_antimatter_production",
+      "energy_antimatter_storage",
+      "energy_antimatter_reactors",
+      "energy_zero_point"
+    ]
+  },
+  "energy_tier5": {
+    "id": 14,
+    "branch": "energy",
+    "tier": 5,
+    "x": -650.0,
+    "y": 1125.8,
+    "nodes": [
+      "energy_vacuum_fluctuations",
+      "energy_casimir_effect",
+      "dysonEngineering",
+      "stellarHarvesting"
+    ]
+  },
+  "materials_tier1": {
+    "id": 15,
+    "branch": "materials",
+    "tier": 1,
+    "x": -300.0,
+    "y": 0.0,
+    "nodes": [
+      "materials_metallurgy",
+      "materials_iron",
+      "materials_aluminum",
+      "materials_copper",
+      "materials_semiconductors",
+      "materials_silicon"
+    ]
+  },
+  "materials_tier2": {
+    "id": 16,
+    "branch": "materials",
+    "tier": 2,
+    "x": -550.0,
+    "y": 0.0,
+    "nodes": [
+      "materials_doping",
+      "materials_alloys",
+      "materials_steel",
+      "materials_titanium",
+      "materials_superalloys"
+    ]
+  },
+  "materials_tier3": {
+    "id": 17,
+    "branch": "materials",
+    "tier": 3,
+    "x": -800.0,
+    "y": 0.0,
+    "nodes": [
+      "materials_composites",
+      "materials_carbon_fiber",
+      "materials_ceramics",
+      "materials_nanotech",
+      "materials_graphene"
+    ]
+  },
+  "materials_tier4": {
+    "id": 18,
+    "branch": "materials",
+    "tier": 4,
+    "x": -1050.0,
+    "y": 0.0,
+    "nodes": [
+      "materials_carbon_nanotubes",
+      "materials_quantum_dots",
+      "materials_programmable",
+      "materials_shape_memory",
+      "materials_self_healing"
+    ]
+  },
+  "materials_tier5": {
+    "id": 19,
+    "branch": "materials",
+    "tier": 5,
+    "x": -1300.0,
+    "y": 0.0,
+    "nodes": [
+      "materials_metamaterials",
+      "materials_exotic",
+      "materials_negative_mass",
+      "materials_strange_matter",
+      "exoticMatter"
+    ]
+  },
+  "propulsion_tier1": {
+    "id": 20,
+    "branch": "propulsion",
+    "tier": 1,
+    "x": -150.0,
+    "y": -259.8,
+    "nodes": [
+      "propulsion_rocketry",
+      "propulsion_solid_fuel",
+      "propulsion_liquid_fuel",
+      "propulsion_hybrid"
+    ]
+  },
+  "propulsion_tier2": {
+    "id": 21,
+    "branch": "propulsion",
+    "tier": 2,
+    "x": -275.0,
+    "y": -476.3,
+    "nodes": [
+      "propulsion_electric",
+      "propulsion_ion_drives",
+      "propulsion_hall_effect",
+      "propulsion_vasimr"
+    ]
+  },
+  "propulsion_tier3": {
+    "id": 22,
+    "branch": "propulsion",
+    "tier": 3,
+    "x": -400.0,
+    "y": -692.8,
+    "nodes": [
+      "propulsion_nuclear",
+      "propulsion_nuclear_thermal",
+      "propulsion_nuclear_electric"
+    ]
+  },
+  "propulsion_tier4": {
+    "id": 23,
+    "branch": "propulsion",
+    "tier": 4,
+    "x": -525.0,
+    "y": -909.3,
+    "nodes": [
+      "propulsion_fusion",
+      "propulsion_fusion_drives",
+      "propulsion_antimatter_catalyzed"
+    ]
+  },
+  "propulsion_tier5": {
+    "id": 24,
+    "branch": "propulsion",
+    "tier": 5,
+    "x": -650.0,
+    "y": -1125.8,
+    "nodes": [
+      "propulsion_ftl",
+      "propulsion_alcubierre",
+      "propulsion_warp_field"
+    ]
+  },
+  "sensors_tier1": {
+    "id": 25,
+    "branch": "sensors",
+    "tier": 1,
+    "x": 150.0,
+    "y": -259.8,
+    "nodes": [
+      "sensors_optical",
+      "sensors_cameras",
+      "sensors_telescopes",
+      "sensors_electromagnetic",
+      "sensors_radio"
+    ]
+  },
+  "sensors_tier2": {
+    "id": 26,
+    "branch": "sensors",
+    "tier": 2,
+    "x": 275.0,
+    "y": -476.3,
+    "nodes": [
+      "sensors_radar",
+      "sensors_spectroscopy",
+      "sensors_mass_spec",
+      "sensors_infrared",
+      "sensors_particle"
+    ]
+  },
+  "sensors_tier3": {
+    "id": 27,
+    "branch": "sensors",
+    "tier": 3,
+    "x": 400.0,
+    "y": -692.8,
+    "nodes": [
+      "sensors_scintillators",
+      "sensors_cloud_chambers",
+      "sensors_quantum",
+      "sensors_quantum_entanglement"
+    ]
+  },
+  "sensors_tier4": {
+    "id": 28,
+    "branch": "sensors",
+    "tier": 4,
+    "x": 525.0,
+    "y": -909.3,
+    "nodes": [
+      "sensors_atomic_clocks",
+      "sensors_squid",
+      "sensors_gravity",
+      "sensors_ligo"
+    ]
+  },
+  "sensors_tier5": {
+    "id": 29,
+    "branch": "sensors",
+    "tier": 5,
+    "x": 650.0,
+    "y": -1125.8,
+    "nodes": [
+      "sensors_gravitational_waves",
+      "sensors_dark_matter",
+      "sensors_wimp",
+      "sensors_axion"
+    ]
+  }
+}
