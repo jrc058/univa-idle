@@ -1,26 +1,47 @@
-# Univa Raids
+# Univa Idle
 
-Co-op roguelike raid system for Univa universe.
+Incremental/idle game about advancing through Kardashev civilization types. 
 
-## Concept
+## Current State
 
-Players bring their heroes and fleets from the main Univa game into scheduled raid events. Linear progression through procedurally generated sectors with branching paths, combat encounters, and boss fights.
+Operable, but far from done.
 
-## Structure
+**Operational:** All very much WIP
+Clicking
+Not clicking, also
+Configurable window management
+Hero
+Tech Tree
+Upgrades
+Prestiging
+Math is mathing-ish
+Import/Export
 
-- **Raids**: Scheduled events (e.g., weekends)
-- **Sectors**: Linear progression with branching choices
-- **Nodes**: Combat, Resource, Event, Shop, Rest, Boss
-- **Parties**: 2-8 players cooperating
-- **Rewards**: Feed back into main Univa game
+**Not Operational:**
+Univa cross-dependencies (no other games built yet)
+Kardashev advancement (yet to be determined)
+More game mechanics, features, and other to come...
+
+## What It Is
+
+Progress from a Type 0 civilization to higher Kardashev levels by harvesting energy, unlocking technologies, and expanding your reach across the cosmos. Features a tech tree, prestige mechanics, and challenge modes.
+
+## Gameplay
+
+- Harvest energy by clicking nodes on the canvas
+- Unlock technologies to boost production
+- Progress through Kardashev civilization types
+- Prestige systems: Archived Data, Blueprints, Archives
+- Challenge modes for replayability
 
 ## Tech Stack
 
-- Node.js + TypeScript
+- Vanilla JavaScript (frontend)
+- Node.js + TypeScript (backend)
 - Hono (web framework)
-- PostgreSQL (shared with main game)
-- Redis (real-time state)
-- Socket.io (real-time coordination)
+- PostgreSQL + Drizzle ORM
+- Redis (state management)
+- Socket.io (multiplayer/sync)
 
 ## Development
 
@@ -33,5 +54,4 @@ Server runs on http://localhost:3001
 
 ## Related
 
-- Main game: `univa-repo` (4X strategy)
-- Design docs: `Documents/Book of John/01 Notes/univa/univa the rpg/`
+Main 4X strategy game: [univa-repo](https://github.com/jrc058/univa-repo)
