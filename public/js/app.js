@@ -3607,16 +3607,16 @@ function updateTechTree() {
     const groupDef = TECH_GROUPS[groupKey];
     const branchColor = branchColors[groupDef.branch] || '#0af';
     
-    // Draw cluster background circle (increased from 200 to 230)
+    // Draw cluster background circle
     const bgCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     bgCircle.setAttribute('cx', groupDef.x);
     bgCircle.setAttribute('cy', groupDef.y);
     bgCircle.setAttribute('r', '280');
     bgCircle.setAttribute('fill', branchColor);
-    bgCircle.setAttribute('opacity', '0.05');
+    bgCircle.setAttribute('opacity', '0.1');
     bgCircle.setAttribute('stroke', branchColor);
-    bgCircle.setAttribute('stroke-width', '1');
-    bgCircle.setAttribute('stroke-opacity', '0.2');
+    bgCircle.setAttribute('stroke-width', '2');
+    bgCircle.setAttribute('stroke-opacity', '0.3');
     svgGroup.appendChild(bgCircle);
   });
   
@@ -3644,9 +3644,9 @@ function updateTechTree() {
       line.setAttribute('x2', to.x);
       line.setAttribute('y2', to.y);
       line.setAttribute('stroke', branchColor);
-      line.setAttribute('stroke-width', '3');
-      line.setAttribute('stroke-opacity', '0.15');
-      line.setAttribute('stroke-dasharray', '10,5');
+      line.setAttribute('stroke-width', '5');
+      line.setAttribute('stroke-opacity', '0.25');
+      line.setAttribute('stroke-dasharray', '15,8');
       svgGroup.appendChild(line);
     }
   });
@@ -3769,9 +3769,18 @@ function updateTechTree() {
       nodeGroup.appendChild(glow);
     }
     
-    // Draw node circle (larger for keystones)
+    // Draw node circle (size varies by orbit)
     const isKeystone = def.position.orbit === 0;
-    const nodeRadius = isKeystone ? 40 : 30;
+    let nodeRadius;
+    if (isKeystone) {
+      nodeRadius = 40;
+    } else if (def.position.orbit === 1) {
+      nodeRadius = 28;
+    } else if (def.position.orbit === 2) {
+      nodeRadius = 24;
+    } else {
+      nodeRadius = 20;
+    }
     
     const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     circle.setAttribute('cx', x);
