@@ -3703,7 +3703,7 @@ function updateTechTree() {
     if (def.requirements.techs) {
       def.requirements.techs.forEach(prereqKey => {
         const prereqDef = TECH_DEFINITIONS[prereqKey];
-        if (prereqDef && prereqDef.tier === currentTier && prereqDef.position) {
+        if (prereqDef && prereqDef.tier === currentTier && prereqDef.position && prereqDef.branch) {
           const prereqX = prereqDef.position.x;
           const prereqY = prereqDef.position.y;
           
