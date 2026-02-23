@@ -46,6 +46,14 @@ const HERO_ACHIEVEMENTS = {
     bonusType: 'survivalBonus',
     bonusDesc: 'Survival Structures',
   },
+  comboKing: {
+    name: 'Combo King',
+    desc: 'Achieve click combos',
+    icon: '🔥',
+    baseBonus: 0.0015, // 0.15% per level
+    bonusType: 'comboBonus',
+    bonusDesc: 'Combo Multiplier',
+  },
 };
 
 const RANK_NAMES = ['Bronze', 'Silver', 'Gold', 'Platinum', 'Uranium', 'Diamond', 'Obsidian', 'Mythril', 'Adamantite'];
@@ -2923,12 +2931,21 @@ function getTimingBonus() {
 }
 
 function getCostMultiplier() {
-  if (!game.cataclysm.crisisMode) return 1.0;
+  let multiplier = 1.0;
   
-  const progress = game.cataclysm.progress;
-  if (progress < 0.95) return 1.5;
-  if (progress < 0.99) return 3.0;
-  return 10.0;
+  // Crisis mode cost increases
+  if (game.cataclysm.crisisMode) {
+    const progress = game.cataclysm.progress;
+    if (progress < 0.95) multiplier = 1.5;
+    else if (progress < 0.99) multiplier = 3.0;
+    else multiplier = 10.0;
+  }
+  
+  // Hero cost reduction (capped at 90% reduction)
+  const heroCostReduction = Math.min(0.90, getTotalAchievementBonus('costReduction'));
+  multiplier *= (1 - heroCostReduction);
+  
+  return multiplier;
 }
 
 function calculatePrestigeCurrency(type) {
@@ -2941,11 +2958,18 @@ function calculatePrestigeCurrency(type) {
   const threshold = thresholds[type];
   const base = Math.pow(game.reach / threshold, 1/3);
   
-  // Survival bonus
+  // Survival bonus from structures
   let survivalBonus = 1.0;
   survivalBonus += game.upgrades.survivalBunker.level * 0.1;
   survivalBonus += game.upgrades.dataArchive.level * 0.05;
   survivalBonus += game.upgrades.seedVault.level * 0.15;
+  
+  // Hero survival bonus
+  const heroSurvivalBonus = getTotalAchievementBonus('survivalBonus');
+  survivalBonus *= (1 + heroSurvivalBonus);
+  
+  // Hero prestige gain bonus
+  const heroPrestigeBonus = 1 + getTotalAchievementBonus('prestigeGain');
   
   // Early evacuation bonus
   const progress = game.cataclysm.progress;
@@ -2954,7 +2978,7 @@ function calculatePrestigeCurrency(type) {
   else if (progress < 0.95) evacuationBonus = 0.25;
   else if (progress < 0.99) evacuationBonus = 0.1;
   
-  return Math.floor(base * survivalBonus * (1 + evacuationBonus));
+  return Math.floor(base * survivalBonus * (1 + evacuationBonus) * heroPrestigeBonus);
 }
 
 function triggerCataclysm(type) {
@@ -4813,8 +4837,14 @@ canvas.addEventListener('click', (e) => {
         }
         game.lastClickTime = now;
         
+        // Track combo achievement (every 10 combo)
+        if (game.clickCombo > 1 && game.clickCombo % 10 === 0) {
+          incrementAchievement('comboKing');
+        }
+        
         // Calculate click bonus with combo multiplier
-        const comboMultiplier = 1 + (game.clickCombo * 0.1); // +10% per combo
+        const heroComboBonus = 1 + getTotalAchievementBonus('comboBonus');
+        const comboMultiplier = 1 + (game.clickCombo * 0.1 * heroComboBonus); // +10% per combo, boosted by hero
         const clickGain = Math.floor(game.clickPower * comboMultiplier);
         game.energy += clickGain;
         

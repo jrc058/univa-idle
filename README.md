@@ -7,20 +7,21 @@ Incremental/idle game about advancing through Kardashev civilization types.
 Operable, but far from done.
 
 **Operational:** All very much WIP
-Clicking
-Not clicking, also
-Configurable window management
-Hero
-Tech Tree
-Upgrades
-Prestiging
-Math is mathing-ish
-Import/Export
+ - Clicking
+ - Not clicking, also
+ - Configurable window management
+ - Hero
+ - Tech Tree
+ - Upgrades
+ - Prestiging
+ - Math is mathing-ish
+ - Import/Export
 
 **Not Operational:**
-Univa cross-dependencies (no other games built yet)
-Kardashev advancement (yet to be determined)
-More game mechanics, features, and other to come...
+ - Ironically offline not yet
+ - Univa cross-dependencies (no other games built yet)
+ - Kardashev advancement (yet to be determined)
+ - More game mechanics, features, and other to come...
 
 ## What It Is
 
