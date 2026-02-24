@@ -13,6 +13,7 @@ class APISync {
 
   async checkAuth() {
     try {
+      console.log('[API Sync] Checking authentication...');
       const response = await fetch(`${API_URL}/auth/me`, {
         credentials: 'include',
       });
@@ -21,10 +22,13 @@ class APISync {
         const data = await response.json();
         this.isLoggedIn = true;
         this.user = data.user;
+        console.log('[API Sync] Logged in as:', this.user.email);
         return true;
+      } else {
+        console.log('[API Sync] Not authenticated, status:', response.status);
       }
     } catch (err) {
-      console.log('Not logged in or API unavailable');
+      console.log('[API Sync] Auth check failed:', err.message);
     }
     
     this.isLoggedIn = false;
@@ -33,28 +37,39 @@ class APISync {
   }
 
   async loadFromCloud() {
-    if (!this.isLoggedIn) return null;
+    if (!this.isLoggedIn) {
+      console.log('[API Sync] Cannot load from cloud - not logged in');
+      return null;
+    }
 
     try {
+      console.log('[API Sync] Loading save from cloud...');
       const response = await fetch(`${API_URL}/game-state/idle`, {
         credentials: 'include',
       });
 
       if (response.ok) {
         const data = await response.json();
+        console.log('[API Sync] Cloud save loaded:', data.data ? 'Found' : 'Empty');
         return data.data;
+      } else {
+        console.log('[API Sync] Failed to load from cloud, status:', response.status);
       }
     } catch (err) {
-      console.error('Failed to load from cloud:', err);
+      console.error('[API Sync] Load error:', err);
     }
     
     return null;
   }
 
   async saveToCloud(gameState) {
-    if (!this.isLoggedIn) return false;
+    if (!this.isLoggedIn) {
+      console.log('[API Sync] Cannot save to cloud - not logged in');
+      return false;
+    }
 
     try {
+      console.log('[API Sync] Saving to cloud...');
       const response = await fetch(`${API_URL}/game-state/idle`, {
         method: 'POST',
         headers: {
@@ -66,10 +81,13 @@ class APISync {
 
       if (response.ok) {
         this.lastSyncTime = Date.now();
+        console.log('[API Sync] Saved to cloud successfully');
         return true;
+      } else {
+        console.log('[API Sync] Failed to save to cloud, status:', response.status);
       }
     } catch (err) {
-      console.error('Failed to save to cloud:', err);
+      console.error('[API Sync] Save error:', err);
     }
     
     return false;

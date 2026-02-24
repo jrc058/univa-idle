@@ -269,12 +269,28 @@ function showSyncStatus(status) {
     font-size: 11px;
     z-index: 9999;
     border: 1px solid rgba(0, 170, 255, 0.3);
+    cursor: pointer;
   `;
   statusEl.textContent = `☁️ ${status}`;
+  
+  // Click to force sync
+  if (window.apiSync && window.apiSync.isLoggedIn) {
+    statusEl.addEventListener('click', async () => {
+      statusEl.textContent = '☁️ Syncing...';
+      const success = await window.apiSync.saveToCloud({ hero: heroCard, game: getGameState() });
+      statusEl.textContent = success ? '☁️ Synced!' : '☁️ Sync failed';
+      setTimeout(() => statusEl.textContent = '☁️ Synced', 2000);
+    });
+  }
+  
   document.body.appendChild(statusEl);
   
   if (status === 'Synced') {
-    setTimeout(() => statusEl.remove(), 3000);
+    setTimeout(() => {
+      if (statusEl.parentNode) {
+        statusEl.textContent = '☁️';
+      }
+    }, 3000);
   }
 }
 
