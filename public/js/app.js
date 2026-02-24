@@ -106,6 +106,133 @@ function loadHeroCard() {
 
 function saveHeroCard() {
   localStorage.setItem('univaHero', JSON.stringify(heroCard));
+  // Also sync to cloud if logged in
+  if (window.apiSync && window.apiSync.isLoggedIn) {
+    window.apiSync.saveToCloud({ hero: heroCard, game: getGameState() });
+  }
+}
+
+// ============================================================================
+// GAME STATE SAVE/LOAD
+// ============================================================================
+
+function getGameState() {
+  return {
+    energy: game.energy,
+    matter: game.matter,
+    info: game.info,
+    reach: game.reach,
+    archivedData: game.archivedData,
+    hardenedBlueprints: game.hardenedBlueprints,
+    geneticArchives: game.geneticArchives,
+    upgrades: game.upgrades,
+    projects: game.projects,
+    techs: game.techs,
+    challenges: game.challenges,
+    challengeCompletions: game.challengeCompletions,
+    totalUpgradesPurchased: game.totalUpgradesPurchased,
+    kardashevTier: game.kardashevTier,
+    survivalBunkers: game.survivalBunkers,
+    dataArchives: game.dataArchives,
+    seedVaults: game.seedVaults,
+    lastUpdate: Date.now(),
+  };
+}
+
+function saveGameState() {
+  const state = getGameState();
+  localStorage.setItem('univaIdle', JSON.stringify(state));
+}
+
+function loadGameState() {
+  try {
+    const saved = localStorage.getItem('univaIdle');
+    if (saved) {
+      const state = JSON.parse(saved);
+      
+      // Restore resources
+      game.energy = state.energy || 0;
+      game.matter = state.matter || 0;
+      game.info = state.info || 0;
+      game.reach = state.reach || 0;
+      
+      // Restore prestige currencies
+      game.archivedData = state.archivedData || 0;
+      game.hardenedBlueprints = state.hardenedBlueprints || 0;
+      game.geneticArchives = state.geneticArchives || 0;
+      
+      // Restore upgrades
+      if (state.upgrades) {
+        Object.keys(state.upgrades).forEach(key => {
+          if (game.upgrades[key] && state.upgrades[key]) {
+            game.upgrades[key].level = state.upgrades[key].level || 0;
+          }
+        });
+      }
+      
+      // Restore other state
+      game.projects = state.projects || {};
+      game.techs = state.techs || {};
+      game.challenges = state.challenges || {};
+      game.challengeCompletions = state.challengeCompletions || {};
+      game.totalUpgradesPurchased = state.totalUpgradesPurchased || 0;
+      game.kardashevTier = state.kardashevTier || 0;
+      game.survivalBunkers = state.survivalBunkers || 0;
+      game.dataArchives = state.dataArchives || 0;
+      game.seedVaults = state.seedVaults || 0;
+      
+      game.lastUpdate = state.lastUpdate || Date.now();
+      
+      return true;
+    }
+  } catch (e) {
+    console.error('Failed to load game state:', e);
+  }
+  return false;
+}
+
+async function initializeCloudSync() {
+  const { default: APISync } = await import('./api-sync.js');
+  window.apiSync = new APISync();
+  
+  const isLoggedIn = await window.apiSync.checkAuth();
+  
+  if (isLoggedIn) {
+    console.log('Logged in as:', window.apiSync.user.email);
+    
+    // Try to load from cloud
+    const cloudData = await window.apiSync.loadFromCloud();
+    
+    if (cloudData) {
+      const localSave = localStorage.getItem('univaIdle');
+      const localTime = localSave ? JSON.parse(localSave).lastUpdate : 0;
+      const cloudTime = cloudData.game ? cloudData.game.lastUpdate : 0;
+      
+      // Use whichever save is newer
+      if (cloudTime > localTime) {
+        console.log('Loading from cloud (newer)');
+        if (cloudData.hero) {
+          localStorage.setItem('univaHero', JSON.stringify(cloudData.hero));
+          loadHeroCard();
+        }
+        if (cloudData.game) {
+          localStorage.setItem('univaIdle', JSON.stringify(cloudData.game));
+          loadGameState();
+        }
+      } else {
+        console.log('Local save is newer, syncing to cloud');
+        await window.apiSync.saveToCloud({ hero: heroCard, game: getGameState() });
+      }
+    }
+    
+    // Start auto-sync every minute
+    window.apiSync.startAutoSync(() => ({ hero: heroCard, game: getGameState() }), 60000);
+  } else {
+    // Show login prompt if not dismissed recently
+    if (window.apiSync.shouldShowLoginPrompt()) {
+      setTimeout(() => window.apiSync.showLoginPrompt(), 3000);
+    }
+  }
 }
 
 function getAchievementRankName(badge) {
@@ -5791,3 +5918,28 @@ function showInfoModal(title, content) {
   };
   document.addEventListener('keydown', escapeHandler);
 }
+
+// ============================================================================
+// INITIALIZATION
+// ============================================================================
+
+// Load saved data on startup
+loadHeroCard();
+loadGameState();
+
+// Initialize cloud sync
+initializeCloudSync().catch(err => {
+  console.log('Cloud sync unavailable:', err);
+});
+
+// Auto-save every 30 seconds
+setInterval(() => {
+  saveGameState();
+  saveHeroCard();
+}, 30000);
+
+// Save on page unload
+window.addEventListener('beforeunload', () => {
+  saveGameState();
+  saveHeroCard();
+});
