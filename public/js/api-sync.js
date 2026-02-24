@@ -83,7 +83,10 @@ class APISync {
     this.syncInterval = setInterval(async () => {
       if (this.isLoggedIn) {
         const gameState = saveCallback();
-        await this.saveToCloud(gameState);
+        const success = await this.saveToCloud(gameState);
+        if (success && window.showSyncStatus) {
+          window.showSyncStatus('Synced');
+        }
       }
     }, intervalMs);
   }

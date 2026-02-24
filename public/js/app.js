@@ -203,10 +203,13 @@ async function initializeCloudSync() {
     // Try to load from cloud
     const cloudData = await window.apiSync.loadFromCloud();
     
-    if (cloudData) {
+    if (cloudData && cloudData.game) {
       const localSave = localStorage.getItem('univaIdle');
       const localTime = localSave ? JSON.parse(localSave).lastUpdate : 0;
-      const cloudTime = cloudData.game ? cloudData.game.lastUpdate : 0;
+      const cloudTime = cloudData.game.lastUpdate || 0;
+      
+      console.log('Local time:', new Date(localTime).toISOString());
+      console.log('Cloud time:', new Date(cloudTime).toISOString());
       
       // Use whichever save is newer
       if (cloudTime > localTime) {
@@ -217,21 +220,61 @@ async function initializeCloudSync() {
         }
         if (cloudData.game) {
           localStorage.setItem('univaIdle', JSON.stringify(cloudData.game));
-          loadGameState();
         }
-      } else {
+      } else if (localTime > cloudTime) {
         console.log('Local save is newer, syncing to cloud');
         await window.apiSync.saveToCloud({ hero: heroCard, game: getGameState() });
+      } else {
+        console.log('Saves are in sync');
       }
+    } else if (localStorage.getItem('univaIdle')) {
+      // No cloud save but have local save - upload it
+      console.log('No cloud save found, uploading local save');
+      await window.apiSync.saveToCloud({ hero: heroCard, game: getGameState() });
     }
+    
+    // Now load the game state (either from cloud or local)
+    loadGameState();
     
     // Start auto-sync every minute
     window.apiSync.startAutoSync(() => ({ hero: heroCard, game: getGameState() }), 60000);
+    
+    // Show sync status
+    showSyncStatus('Synced');
   } else {
+    // Not logged in, just load local save
+    loadGameState();
+    
     // Show login prompt if not dismissed recently
     if (window.apiSync.shouldShowLoginPrompt()) {
       setTimeout(() => window.apiSync.showLoginPrompt(), 3000);
     }
+  }
+}
+
+function showSyncStatus(status) {
+  const existingStatus = document.getElementById('sync-status');
+  if (existingStatus) existingStatus.remove();
+  
+  const statusEl = document.createElement('div');
+  statusEl.id = 'sync-status';
+  statusEl.style.cssText = `
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 170, 255, 0.2);
+    color: #0af;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    z-index: 9999;
+    border: 1px solid rgba(0, 170, 255, 0.3);
+  `;
+  statusEl.textContent = `☁️ ${status}`;
+  document.body.appendChild(statusEl);
+  
+  if (status === 'Synced') {
+    setTimeout(() => statusEl.remove(), 3000);
   }
 }
 
@@ -5923,13 +5966,13 @@ function showInfoModal(title, content) {
 // INITIALIZATION
 // ============================================================================
 
-// Load saved data on startup
+// Load hero card first
 loadHeroCard();
-loadGameState();
 
-// Initialize cloud sync
+// Initialize cloud sync - this will handle loading game state
 initializeCloudSync().catch(err => {
-  console.log('Cloud sync unavailable:', err);
+  console.log('Cloud sync unavailable, using local save:', err);
+  loadGameState();
 });
 
 // Auto-save every 30 seconds
