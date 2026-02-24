@@ -1,7 +1,7 @@
 // API Sync Module for Univa Idle
 // Handles authentication and cloud save sync
 
-const API_URL = 'https://api.playuniva.com/api';
+const API_URL = '/api'; // Use same domain to avoid cookie issues
 
 class APISync {
   constructor() {
