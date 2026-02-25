@@ -5351,21 +5351,155 @@ function loadGame() {
 setInterval(saveGame, 10000);
 
 // ============================================================================
+// CLOUD SYNC INTEGRATION
+// ============================================================================
+
+async function initializeCloudSync() {
+  // APISync is loaded from api-sync.js (not a module)
+  if (typeof APISync === 'undefined') {
+    console.warn('APISync not loaded');
+    return false;
+  }
+  
+  window.apiSync = new APISync();
+  
+  const isLoggedIn = await window.apiSync.checkAuth();
+  
+  if (isLoggedIn) {
+    console.log('[Cloud Sync] Logged in as:', window.apiSync.user.email);
+    
+    // Try to load from cloud
+    const cloudData = await window.apiSync.loadFromCloud();
+    
+    if (cloudData && cloudData.game) {
+      const localSave = localStorage.getItem('univaIdle');
+      const localTime = localSave ? JSON.parse(localSave).lastUpdate : 0;
+      const cloudTime = cloudData.game.lastUpdate || 0;
+      
+      console.log('[Cloud Sync] Local time:', new Date(localTime).toISOString());
+      console.log('[Cloud Sync] Cloud time:', new Date(cloudTime).toISOString());
+      
+      // Use whichever save is newer
+      if (cloudTime > localTime) {
+        console.log('[Cloud Sync] Loading from cloud (newer)');
+        if (cloudData.hero) {
+          localStorage.setItem('univaHero', JSON.stringify(cloudData.hero));
+        }
+        if (cloudData.game) {
+          localStorage.setItem('univaIdle', JSON.stringify(cloudData.game));
+        }
+        showToast('Cloud save loaded', 'success');
+      } else if (localTime > cloudTime) {
+        console.log('[Cloud Sync] Local save is newer, syncing to cloud');
+        const currentState = {
+          hero: heroCard,
+          game: {
+            ...getGameState(),
+            lastUpdate: Date.now()
+          }
+        };
+        await window.apiSync.saveToCloud(currentState);
+        showToast('Local save synced to cloud', 'success');
+      } else {
+        console.log('[Cloud Sync] Saves are in sync');
+      }
+    } else if (localStorage.getItem('univaIdle')) {
+      // No cloud save but have local save - upload it
+      console.log('[Cloud Sync] No cloud save found, uploading local save');
+      const currentState = {
+        hero: heroCard,
+        game: {
+          ...getGameState(),
+          lastUpdate: Date.now()
+        }
+      };
+      await window.apiSync.saveToCloud(currentState);
+      showToast('Progress backed up to cloud', 'success');
+    }
+    
+    // Start auto-sync every minute
+    window.apiSync.startAutoSync(() => {
+      return {
+        hero: heroCard,
+        game: {
+          ...getGameState(),
+          lastUpdate: Date.now()
+        }
+      };
+    }, 60000);
+    
+    console.log('[Cloud Sync] Auto-sync enabled (every 60s)');
+    return true;
+  } else {
+    console.log('[Cloud Sync] Not logged in');
+    
+    // Show login prompt if not dismissed recently
+    if (window.apiSync.shouldShowLoginPrompt()) {
+      setTimeout(() => window.apiSync.showLoginPrompt(), 3000);
+    }
+    return false;
+  }
+}
+
+function getGameState() {
+  return {
+    energy: game.energy,
+    matter: game.matter,
+    info: game.info,
+    reach: game.reach,
+    kardashevTier: game.kardashevTier,
+    kardashevProgress: game.kardashevProgress,
+    archivedData: game.archivedData,
+    hardenedBlueprints: game.hardenedBlueprints,
+    geneticArchives: game.geneticArchives,
+    achievements: game.achievements,
+    totalUpgradesPurchased: game.totalUpgradesPurchased,
+    upgrades: Object.keys(game.upgrades).reduce((acc, key) => {
+      acc[key] = { level: game.upgrades[key].level };
+      return acc;
+    }, {}),
+    nodes: game.nodes.map(node => ({
+      id: node.id,
+      state: node.state,
+      harvestProgress: node.harvestProgress,
+      regenerationTime: node.regenerationTime,
+      harvestCount: node.harvestCount,
+    })),
+    lastUpdate: Date.now(),
+  };
+}
+
+// ============================================================================
 // INITIALIZATION
 // ============================================================================
 
-initNodes();
-loadHeroCard();
-loadGame();
-initializeWindows();
-calculateRates();
-updateUpgradesList();
-updateBuyModeButtons();
-updateHeroCardUI();
-updateProjectsList();
-updateTechTree();
-updateChallengesList();
-gameLoop();
+// Initialize cloud sync first, then load game
+(async function init() {
+  initNodes();
+  loadHeroCard();
+  
+  // Try to initialize cloud sync
+  const cloudSyncEnabled = await initializeCloudSync();
+  
+  // Load game (either from cloud or local)
+  loadGame();
+  
+  initializeWindows();
+  calculateRates();
+  updateUpgradesList();
+  updateBuyModeButtons();
+  updateHeroCardUI();
+  updateProjectsList();
+  updateTechTree();
+  updateChallengesList();
+  gameLoop();
+  
+  if (cloudSyncEnabled) {
+    console.log('[Game] Initialized with cloud sync');
+  } else {
+    console.log('[Game] Initialized in local-only mode');
+  }
+})();
 
 
 
