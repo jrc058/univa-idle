@@ -77,9 +77,41 @@ Object.keys(HERO_ACHIEVEMENTS).forEach(key => {
   };
 });
 
+// ============================================================================
+// STORAGE HELPERS - User-scoped localStorage
+// ============================================================================
+
+function getStorageKey(baseKey) {
+  if (window.apiSync?.isLoggedIn && window.apiSync?.user?.id) {
+    return `${baseKey}_${window.apiSync.user.id}`;
+  }
+  return baseKey; // Anonymous
+}
+
+function migrateAnonymousSave(userId) {
+  const anonGame = localStorage.getItem('univaIdle');
+  const anonHero = localStorage.getItem('univaHero');
+  
+  if (anonGame || anonHero) {
+    console.log('[Migration] Migrating anonymous save to user account');
+    
+    if (anonGame) {
+      localStorage.setItem(`univaIdle_${userId}`, anonGame);
+      localStorage.removeItem('univaIdle');
+    }
+    if (anonHero) {
+      localStorage.setItem(`univaHero_${userId}`, anonHero);
+      localStorage.removeItem('univaHero');
+    }
+    
+    return true;
+  }
+  return false;
+}
+
 function loadHeroCard() {
   try {
-    const saved = localStorage.getItem('univaHero');
+    const saved = localStorage.getItem(getStorageKey('univaHero'));
     if (saved) {
       const data = JSON.parse(saved);
       heroCard.name = data.name || 'Wanderer';
@@ -105,7 +137,7 @@ function loadHeroCard() {
 }
 
 function saveHeroCard() {
-  localStorage.setItem('univaHero', JSON.stringify(heroCard));
+  localStorage.setItem(getStorageKey('univaHero'), JSON.stringify(heroCard));
   // Also sync to cloud if logged in
   if (window.apiSync && window.apiSync.isLoggedIn) {
     window.apiSync.saveToCloud({ hero: heroCard, game: getGameState() });
@@ -141,12 +173,12 @@ function getGameState() {
 
 function saveGameState() {
   const state = getGameState();
-  localStorage.setItem('univaIdle', JSON.stringify(state));
+  localStorage.setItem(getStorageKey('univaIdle'), JSON.stringify(state));
 }
 
 function loadGameState() {
   try {
-    const saved = localStorage.getItem('univaIdle');
+    const saved = localStorage.getItem(getStorageKey('univaIdle'));
     if (saved) {
       const state = JSON.parse(saved);
       
@@ -5157,7 +5189,7 @@ document.getElementById('ascend-btn')?.addEventListener('click', () => {
 
 // Export save
 document.getElementById('export-btn')?.addEventListener('click', () => {
-  const saveData = localStorage.getItem('univaIdle');
+  const saveData = localStorage.getItem(getStorageKey('univaIdle'));
   if (!saveData) {
     alert('No save data found!');
     return;
@@ -5185,7 +5217,7 @@ document.getElementById('import-file')?.addEventListener('change', (e) => {
   reader.onload = (event) => {
     try {
       const saveData = JSON.parse(event.target.result);
-      localStorage.setItem('univaIdle', JSON.stringify(saveData));
+      localStorage.setItem(getStorageKey('univaIdle'), JSON.stringify(saveData));
       alert('Save imported successfully! Reloading...');
       location.reload();
     } catch (err) {
@@ -5343,7 +5375,7 @@ function loadGame() {
     }
   } catch (e) {
     console.error('Failed to load save:', e);
-    localStorage.removeItem('univaIdle');
+    localStorage.removeItem(getStorageKey('univaIdle'));
   }
 }
 
@@ -5366,55 +5398,70 @@ async function initializeCloudSync() {
   const isLoggedIn = await window.apiSync.checkAuth();
   
   if (isLoggedIn) {
+    const userId = window.apiSync.user.id;
     console.log('[Cloud Sync] Logged in as:', window.apiSync.user.email);
+    
+    // Check for anonymous save to migrate
+    const hasAnonSave = localStorage.getItem('univaIdle') || localStorage.getItem('univaHero');
+    const hasUserSave = localStorage.getItem(`univaIdle_${userId}`) || localStorage.getItem(`univaHero_${userId}`);
     
     // Try to load from cloud
     const cloudData = await window.apiSync.loadFromCloud();
     
     if (cloudData && cloudData.game) {
-      const localSave = localStorage.getItem('univaIdle');
-      const localTime = localSave ? JSON.parse(localSave).lastUpdate : 0;
+      // Cloud save exists - use it as source of truth
       const cloudTime = cloudData.game.lastUpdate || 0;
+      console.log('[Cloud Sync] Cloud save found:', new Date(cloudTime).toISOString());
       
-      console.log('[Cloud Sync] Local time:', new Date(localTime).toISOString());
-      console.log('[Cloud Sync] Cloud time:', new Date(cloudTime).toISOString());
-      
-      // Use whichever save is newer
-      if (cloudTime > localTime) {
-        console.log('[Cloud Sync] Loading from cloud (newer)');
-        if (cloudData.hero) {
-          localStorage.setItem('univaHero', JSON.stringify(cloudData.hero));
-        }
-        if (cloudData.game) {
-          localStorage.setItem('univaIdle', JSON.stringify(cloudData.game));
-        }
-        showToast('Cloud save loaded', 'success');
-      } else if (localTime > cloudTime) {
-        console.log('[Cloud Sync] Local save is newer, syncing to cloud');
-        const currentState = {
-          hero: heroCard,
-          game: {
-            ...getGameState(),
-            lastUpdate: Date.now()
-          }
-        };
-        await window.apiSync.saveToCloud(currentState);
-        showToast('Local save synced to cloud', 'success');
-      } else {
-        console.log('[Cloud Sync] Saves are in sync');
+      // Write cloud data to user-scoped localStorage
+      if (cloudData.hero) {
+        localStorage.setItem(`univaHero_${userId}`, JSON.stringify(cloudData.hero));
       }
-    } else if (localStorage.getItem('univaIdle')) {
-      // No cloud save but have local save - upload it
-      console.log('[Cloud Sync] No cloud save found, uploading local save');
-      const currentState = {
-        hero: heroCard,
-        game: {
-          ...getGameState(),
-          lastUpdate: Date.now()
-        }
+      if (cloudData.game) {
+        localStorage.setItem(`univaIdle_${userId}`, JSON.stringify(cloudData.game));
+      }
+      
+      // Clear anonymous save if it exists
+      if (hasAnonSave) {
+        localStorage.removeItem('univaIdle');
+        localStorage.removeItem('univaHero');
+        console.log('[Cloud Sync] Cleared anonymous save (cloud save loaded)');
+      }
+      
+      showToast('Cloud save loaded', 'success');
+    } else if (hasAnonSave && !hasUserSave) {
+      // First login - migrate anonymous save
+      console.log('[Cloud Sync] First login detected - migrating anonymous save');
+      migrateAnonymousSave(userId);
+      
+      // Upload migrated save to cloud
+      const migratedGame = localStorage.getItem(`univaIdle_${userId}`);
+      const migratedHero = localStorage.getItem(`univaHero_${userId}`);
+      
+      if (migratedGame || migratedHero) {
+        const uploadData = {
+          hero: migratedHero ? JSON.parse(migratedHero) : heroCard,
+          game: migratedGame ? JSON.parse(migratedGame) : getGameState()
+        };
+        uploadData.game.lastUpdate = Date.now();
+        
+        await window.apiSync.saveToCloud(uploadData);
+        showToast('Progress uploaded to cloud', 'success');
+      }
+    } else if (hasUserSave) {
+      // Returning user with local save - sync to cloud
+      console.log('[Cloud Sync] Uploading local save to cloud');
+      const localGame = localStorage.getItem(`univaIdle_${userId}`);
+      const localHero = localStorage.getItem(`univaHero_${userId}`);
+      
+      const uploadData = {
+        hero: localHero ? JSON.parse(localHero) : heroCard,
+        game: localGame ? JSON.parse(localGame) : getGameState()
       };
-      await window.apiSync.saveToCloud(currentState);
-      showToast('Progress backed up to cloud', 'success');
+      uploadData.game.lastUpdate = Date.now();
+      
+      await window.apiSync.saveToCloud(uploadData);
+      showToast('Progress synced to cloud', 'success');
     }
     
     // Start auto-sync every minute
@@ -5431,7 +5478,7 @@ async function initializeCloudSync() {
     console.log('[Cloud Sync] Auto-sync enabled (every 60s)');
     return true;
   } else {
-    console.log('[Cloud Sync] Not logged in');
+    console.log('[Cloud Sync] Not logged in - using anonymous save');
     
     // Show login prompt if not dismissed recently
     if (window.apiSync.shouldShowLoginPrompt()) {
@@ -5759,7 +5806,7 @@ function setupWindowEventListeners() {
   const exportBtn = document.getElementById('export-btn');
   if (exportBtn) {
     exportBtn.addEventListener('click', () => {
-      const saveData = localStorage.getItem('univaIdle');
+      const saveData = localStorage.getItem(getStorageKey('univaIdle'));
       if (!saveData) {
         alert('No save data found!');
         return;
@@ -5791,7 +5838,7 @@ function setupWindowEventListeners() {
       reader.onload = (event) => {
         try {
           const saveData = JSON.parse(event.target.result);
-          localStorage.setItem('univaIdle', JSON.stringify(saveData));
+          localStorage.setItem(getStorageKey('univaIdle'), JSON.stringify(saveData));
           alert('Save imported successfully! Reloading...');
           location.reload();
         } catch (err) {
@@ -6067,8 +6114,8 @@ function handleMenuAction(action) {
         if (confirm('Are you absolutely sure? Type "RESET" in the next prompt to confirm.')) {
           const confirmation = prompt('Type RESET to confirm:');
           if (confirmation === 'RESET') {
-            localStorage.removeItem('univaIdle');
-            localStorage.removeItem('univaHero');
+            localStorage.removeItem(getStorageKey('univaIdle'));
+            localStorage.removeItem(getStorageKey('univaHero'));
             location.reload();
           }
         }
