@@ -226,48 +226,6 @@ function loadGameState() {
 // Auto-save every 10 seconds
 setInterval(saveGame, 10000);
 
-function showSyncStatus(status) {
-  const existingStatus = document.getElementById('sync-status');
-  if (existingStatus) existingStatus.remove();
-  
-  const statusEl = document.createElement('div');
-  statusEl.id = 'sync-status';
-  statusEl.style.cssText = `
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 170, 255, 0.2);
-    color: #0af;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 11px;
-    z-index: 9999;
-    border: 1px solid rgba(0, 170, 255, 0.3);
-    cursor: pointer;
-  `;
-  statusEl.textContent = `☁️ ${status}`;
-  
-  // Click to force sync
-  if (window.apiSync && window.apiSync.isLoggedIn) {
-    statusEl.addEventListener('click', async () => {
-      statusEl.textContent = '☁️ Syncing...';
-      const success = await window.apiSync.saveToCloud({ hero: heroCard, game: getGameState() });
-      statusEl.textContent = success ? '☁️ Synced!' : '☁️ Sync failed';
-      setTimeout(() => statusEl.textContent = '☁️ Synced', 2000);
-    });
-  }
-  
-  document.body.appendChild(statusEl);
-  
-  if (status === 'Synced') {
-    setTimeout(() => {
-      if (statusEl.parentNode) {
-        statusEl.textContent = '☁️';
-      }
-    }, 3000);
-  }
-}
-
 function getAchievementRankName(badge) {
   return RANK_NAMES[badge] || `Badge ${badge}`;
 }
