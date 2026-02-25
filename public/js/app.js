@@ -223,6 +223,12 @@ function loadGameState() {
   return false;
 }
 
+// Auto-save every 10 seconds
+setInterval(saveGame, 10000);
+
+function showSyncStatus(status) {
+  const existingStatus = document.getElementById('sync-status');
+  if (existingStatus) existingStatus.remove();
   
   const statusEl = document.createElement('div');
   statusEl.id = 'sync-status';
