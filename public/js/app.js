@@ -5430,34 +5430,6 @@ async function initializeCloudSync() {
   }
 }
 
-function getGameState() {
-  return {
-    energy: game.energy,
-    matter: game.matter,
-    info: game.info,
-    reach: game.reach,
-    kardashevTier: game.kardashevTier,
-    kardashevProgress: game.kardashevProgress,
-    archivedData: game.archivedData,
-    hardenedBlueprints: game.hardenedBlueprints,
-    geneticArchives: game.geneticArchives,
-    achievements: game.achievements,
-    totalUpgradesPurchased: game.totalUpgradesPurchased,
-    upgrades: Object.keys(game.upgrades).reduce((acc, key) => {
-      acc[key] = { level: game.upgrades[key].level };
-      return acc;
-    }, {}),
-    nodes: game.nodes.map(node => ({
-      id: node.id,
-      state: node.state,
-      harvestProgress: node.harvestProgress,
-      regenerationTime: node.regenerationTime,
-      harvestCount: node.harvestCount,
-    })),
-    lastUpdate: Date.now(),
-  };
-}
-
 // ============================================================================
 // INITIALIZATION
 // ============================================================================
